@@ -1,0 +1,3 @@
+linux-headers:
+  ubuntu: |
+    sudo apt-get install linux-headers-"`uname -r`"

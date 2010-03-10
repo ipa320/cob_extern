@@ -1,0 +1,16 @@
+<package>
+  <description brief="libntcan">
+
+     libntcan
+
+  </description>
+  <author>Florian Weisshardt, email:florian.weisshardt@ipa.fhg.de</author>
+  <license>proprietary</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://www.esd-electronics.com</url>
+
+  <export>
+    <cpp cflags="-I${prefix}/common/include" lflags="-Wl,-rpath,${prefix}/common/lib -L${prefix}/common/lib -lntcan"/>
+  </export>
+  
+</package>

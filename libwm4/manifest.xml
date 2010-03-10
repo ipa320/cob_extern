@@ -1,0 +1,16 @@
+<package>
+  <description brief="libWm4">
+
+     libWm4
+
+  </description>
+  <author>Florian Weisshardt, email:florian.weisshardt@ipa.fhg.de</author>
+  <license>LGPL</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://www.geometrictools.com/Downloads/Downloads.html</url>
+
+  <export>
+    <cpp cflags="-I${prefix}/common/include" lflags="-Wl,-rpath,${prefix}/common/lib -L${prefix}/common/lib -lWm4Foundation -lWm4Graphics -lWm4Imagics -lWm4OpenGLApplication -lWm4OpenGLRenderer -lWm4Physics"/>
+  </export>
+
+</package>

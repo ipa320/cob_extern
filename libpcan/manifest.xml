@@ -1,0 +1,18 @@
+<package>
+  <description brief="libpcan">
+
+     libpcan
+
+  </description>
+  <author>Florian Weisshardt, email:florian.weisshardt@ipa.fhg.de</author>
+  <license>LGPL</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://p103112.typo3server.info/fileadmin/media/linux/index.htm</url>
+
+  <rosdep name="linux-headers"/>
+
+  <export>
+    <cpp cflags="-I${prefix}/common/include" lflags="-Wl,-rpath,${prefix}/common/lib -L${prefix}/common/lib -lpcan"/>
+  </export>
+  
+</package>
