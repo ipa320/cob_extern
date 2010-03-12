@@ -12,7 +12,7 @@
   <rosdep name="linux-headers"/>
 
   <export>
-    <cpp cflags="-I${prefix}/common/include" lflags="-Wl,-rpath,${prefix}/common/lib -L${prefix}/common/lib -lpcan"/>
+    <cpp cflags="-I${prefix}/common/include -I${prefix}/common/include/libpcan" lflags="-Wl,-rpath,${prefix}/common/lib -L${prefix}/common/lib -lpcan"/>
   </export>
   
 </package>
