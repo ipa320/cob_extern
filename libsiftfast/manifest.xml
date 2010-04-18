@@ -1,0 +1,15 @@
+<package>
+  <description brief="libsiftfast">
+    Library to compute SIFT features
+  </description>
+  <license>LGPL</license>
+  <author>zerofrog</author>
+  <export>
+    <cpp lflags="-Wl,-rpath,${prefix} -Wl,-rpath,${prefix}/lib -L${prefix}/lib -lsiftfast -lgomp" cflags="-I${prefix}/include"/>
+    <python path="${prefix}/lib"/>
+  </export>
+  <versioncontrol type="svn" url="https://libsift.svn.sourceforge.net/svnroot/libsift/trunk"/>
+  <sysdepend os="ubuntu" version="7.04-feisty" package="python-numpy"/>
+  <sysdepend os="ubuntu" version="8.04-hardy" package="python-numpy"/>
+</package>
+
