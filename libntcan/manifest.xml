@@ -10,7 +10,7 @@
   <url>http://www.esd-electronics.com</url>
 
   <export>
-    <cpp cflags="-I${prefix}/common/include" lflags="-Wl,-rpath,${prefix}/common/lib -L${prefix}/common/lib -lntcan"/>
+    <cpp cflags="-I${prefix}/common/include -I${prefix}/common/include/libntcan" lflags="-Wl,-rpath,${prefix}/common/lib -L${prefix}/common/lib -lntcan"/>
   </export>
   
 </package>
