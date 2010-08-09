@@ -5,7 +5,7 @@
 
   </description>
   <author>Maintained by Florian Weisshardt, email:florian.weisshardt@ipa.fhg.de</author>
-  <license>LGPL,proprietary</license>  
+  <license>LGPL</license>  
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/cob_extern</url>
   <depend stack="ros" />
