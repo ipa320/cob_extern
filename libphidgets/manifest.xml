@@ -1,0 +1,14 @@
+<package>
+  <description brief="libphidgets">
+
+     libphidgets
+
+  </description>
+  <author></author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/libphidgets</url>
+
+</package>
+
+
