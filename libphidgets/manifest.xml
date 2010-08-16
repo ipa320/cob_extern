@@ -4,8 +4,8 @@
      libphidgets
 
   </description>
-  <author></author>
-  <license>BSD</license>
+  <author>Florian Weisshardt, email:florian.weisshardt@ipa.fhg.de</author>
+  <license>LGPL</license>
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/libphidgets</url>
 
