@@ -1,0 +1,31 @@
+#!/bin/bash
+#
+#
+group="root"
+mode="666"
+
+if test $UID -ne 0; then
+  echo "ERROR: you must be root to use esdcan_make_devices!"
+  echo ""
+  exit 1
+fi
+
+
+# get major number from /proc/devices
+major=`cat /proc/devices | awk "\\$2==\"CAN_USB331\" {print \\$1}"`
+
+# make device nodes
+if test "$major"; then
+  i=0;
+  while test $i -le 1; do
+      rm -f /dev/can$i;
+      mknod --mode=a+rw /dev/can$i c $major $i;
+      chgrp $group /dev/can$i;
+      chmod $mode  /dev/can$i;
+      i=$[$i + 1];
+  done;
+else
+  echo "Please do first a \"insmod esdcan_usb331.o or insmod esdcan_usb331.ko ... (depends on kernel version)\"";
+fi
+
+# end of script
