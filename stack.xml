@@ -4,7 +4,7 @@
      The cob_extern stack contains third party libraries needed for operating Care-O-bot. The packages are downloaded from the manufactorers website and not changed in any way.
 
   </description>
-  <author>Maintained by Florian Weisshardt, email:florian.weisshardt@ipa.fhg.de</author>
+  <author>Maintained by Florian Weisshardt</author>
   <license>LGPL,proprietary</license>  
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/cob_extern</url>
