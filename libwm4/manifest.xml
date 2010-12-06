@@ -13,4 +13,6 @@
     <cpp cflags="-I${prefix}/common/include" lflags="-Wl,-rpath,${prefix}/common/lib -L${prefix}/common/lib -lWm4Foundation"/>
   </export>
 
+  <rosdep name="unzip"/>
+
 </package>
