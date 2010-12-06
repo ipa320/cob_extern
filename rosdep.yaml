@@ -4,6 +4,10 @@ linux-headers:
     '9.10': linux-headers-generic
     '10.04': linux-headers-generic
     '10.10': linux-headers-generic
+
 #linux-headers:
 #  ubuntu: |
 #    sudo apt-get install linux-headers-"`uname -r`"
+
+libusb: 
+  ubuntu: libusb-dev
