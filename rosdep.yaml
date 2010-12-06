@@ -11,6 +11,8 @@ linux-headers:
 
 libusb: 
   ubuntu: libusb-dev
+libx11: 
+  ubuntu: libx11-dev
 
 unzip:
   ubuntu: unzip
