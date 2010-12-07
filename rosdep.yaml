@@ -14,6 +14,17 @@ libusb:
 libx11: 
   ubuntu: libx11-dev
 libxext:
-  ubuntu: libxext-dev 
+  ubuntu: libxext-dev
+  debian: libxext-dev
+  fedora: libXext-devel
+  rhel: libXext-devel
+  macports: xorg-libXext
+  arch: libxext
+  gentoo: x11-libs/libXext
+  freebsd: libXext
+libgl:
+  ubuntu: libgl1-mesa-dev
+libglu:
+  ubuntu: libglu-dev
 unzip:
   ubuntu: unzip
