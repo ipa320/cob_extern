@@ -15,5 +15,6 @@
 
   <rosdep name="unzip"/>
   <rosdep name="libx11"/>
+  <rosdep name="libxext"/>
 
 </package>

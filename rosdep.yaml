@@ -13,6 +13,7 @@ libusb:
   ubuntu: libusb-dev
 libx11: 
   ubuntu: libx11-dev
-
+libxext:
+  ubuntu: libxext-dev 
 unzip:
   ubuntu: unzip
