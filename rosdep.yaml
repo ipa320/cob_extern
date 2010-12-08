@@ -1,15 +1,5 @@
 linux-headers:
-  ubuntu:
-    '8.04': linux-headers-generic
-    '8.10': linux-headers-generic
-    '9.04': linux-headers-generic
-    '9.10': linux-headers-generic
-    '10.04': linux-headers-generic
-    '10.10': linux-headers-generic
-
-#linux-headers:
-#  ubuntu: |
-#    sudo apt-get install linux-headers-"`uname -r`"
+  ubuntu: linux-headers-generic
 
 libusb: 
   ubuntu: libusb-dev
