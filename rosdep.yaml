@@ -1,18 +1,5 @@
 linux-headers:
-  ubuntu:
-    '9.04': linux-headers-generic linux-headers-2.6.28-19-generic linux-headers-2.6.28-18-generic linux-headers-2.6.28-17-generic linux-headers-2.6.28-16-generic
-    '9.10': linux-headers-generic
-    '10.04': linux-headers-generic
-    '10.10': linux-headers-generic
-
-#linux-headers:
-#  ubuntu: |
-#    sudo apt-get install linux-headers-"`uname -r`"
+  ubuntu: linux-headers-generic
 
 libusb: 
   ubuntu: libusb-dev
-libx11: 
-  ubuntu: libx11-dev
-
-unzip:
-  ubuntu: unzip

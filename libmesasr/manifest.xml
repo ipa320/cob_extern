@@ -1,0 +1,16 @@
+<package>
+  <description brief="libmesasr">
+
+     libmesasr
+
+  </description>
+  <author>Florian Weisshardt</author>
+  <license>LGPL</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/libmesasr</url>
+  
+  <export>
+    <cpp cflags="-I${prefix}/common/include -I${prefix}/common/include/libmesasr" lflags="-Wl,-rpath,${prefix}/common/lib -L${prefix}/common/lib -lmesasr"/>
+  </export>
+  
+</package>
