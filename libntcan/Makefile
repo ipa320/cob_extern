@@ -6,4 +6,4 @@ libntcan:
 clean:
 	rm common/lib/*.a
 wipe: clean
-	rm common/lib/*.a
+	-rm common/lib/*.a
