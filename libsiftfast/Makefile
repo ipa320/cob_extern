@@ -1,7 +1,7 @@
 all: libsiftfast
 
 SVN_DIR = build/libsiftfast_svn
-SVN_URL = https://libsift.svn.sourceforge.net/svnroot/libsift/trunk
+SVN_URL = http://libsift.svn.sourceforge.net/svnroot/libsift/trunk
 include $(shell rospack find mk)/svn_checkout.mk
 
 libsiftfast: $(SVN_DIR)
