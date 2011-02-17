@@ -3,6 +3,9 @@ linux-headers:
 
 libusb: 
   ubuntu: libusb-dev
+
+unzip: 
+  ubuntu: unzip
   
 libsdl-net:
   ubuntu: libsdl-net1.2-dev
