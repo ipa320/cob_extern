@@ -15,6 +15,7 @@
   </export>
 
    <rosdep name="libsdl-net"/>
+   <rosdep name="unzip"/>
 
 </package>
 
