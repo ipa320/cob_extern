@@ -1,0 +1,20 @@
+<package>
+  <description brief="brics_oodl_scanner_libs">
+
+     brics_oodl_scanner_libs
+
+  </description>
+  <author>Alexander Bubeck</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/brics_oodl_scanner_libs</url>
+
+  <depend package="urg_driver"/>
+  <export>
+    <cpp cflags="-I${prefix}/include -I${prefix}/include/brics_oodl_scanner_libs" lflags="-Wl,-rpath,${prefix}/lib -L${prefix}/lib -lbrics_oodl_scanner_libs_hokuyo -lbrics_oodl_scanner_libs_s300"/>
+  </export>
+
+
+</package>
+
+

@@ -1,0 +1,30 @@
+all: urg
+
+TARBALL = build/urg-0.8.11.zip
+TARBALL_URL = http://www.hokuyo-aut.jp/02sensor/07scanner/download/urg_programs_en/urg-0.8.11.zip
+SOURCE_DIR = build/urg-0.8.11
+UNPACK_CMD = unzip
+include $(shell rospack find mk)/download_unpack_build.mk
+
+urg: $(SOURCE_DIR)/unpacked
+	mkdir -p include/urg_driver
+	mkdir -p lib
+	cd $(SOURCE_DIR) && ./configure && make $(ROS_PARALLEL_JOBS)
+	cp $(SOURCE_DIR)/src/cpp/urg/.libs/liburg.so* lib
+	cp $(SOURCE_DIR)/src/cpp/connection/.libs/liburg_connection.so* lib
+	cp $(SOURCE_DIR)/src/cpp/connection/sdl/.libs/liburg_connection_sdl.so* lib
+	cp $(SOURCE_DIR)/src/cpp/monitor/.libs/liburg_monitor.so* lib
+	cp $(SOURCE_DIR)/src/cpp/system/.libs/liburg_system.so* lib
+	cp $(SOURCE_DIR)/src/cpp/geometry/.libs/liburg_geometry.so* lib
+	cp $(SOURCE_DIR)/src/cpp/common/.libs/liburg_common.so* lib
+	cp $(SOURCE_DIR)/src/cpp/coordinate/.libs/liburg_coordinate.so* lib
+	cp $(SOURCE_DIR)/include/cpp/* include/urg_driver/
+	
+clean:
+	rm -rf src $(SOURCE_DIR) urg
+wipe: clean
+	rm -rf include
+	rm -rf lib
+	-rm -rf build
+
+include $(shell rospack find mk)/cmake.mk
