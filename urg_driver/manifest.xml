@@ -5,18 +5,15 @@
 
   </description>
   <author>Alexander Bubeck</author>
-  <license>BSD</license>
+  <license>proprietary</license>
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/urg_driver</url>
 
+  <rosdep name="libsdl-net"/>
+  <rosdep name="unzip"/>
 
   <export>
     <cpp cflags="-I${prefix}/include -I${prefix}/include/urg_driver" lflags="-Wl,-rpath,${prefix}/lib -L${prefix}/lib -lurg -lurg_connection -lurg_connection_sdl -lurg_monitor -lurg_system -lurg_geometry -lurg_common -lurg_coordinate"/>
   </export>
 
-   <rosdep name="libsdl-net"/>
-   <rosdep name="unzip"/>
-
 </package>
-
-
