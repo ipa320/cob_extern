@@ -7,7 +7,7 @@ endif
 all: libmesasr
 
 libmesasr:
-	wget --tries=10 https://code.ros.org/svn/release/download/thirdparty/$(FILENAME)
+	wget --tries=10 http://www.mesa-imaging.ch/customer/driver/$(FILENAME)
 	mkdir -p TMP
 	dpkg-deb -x $(FILENAME) TMP
 	mkdir -p common/lib/
