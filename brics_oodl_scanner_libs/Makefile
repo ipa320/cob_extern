@@ -25,5 +25,6 @@ clean:
 wipe: clean
 	rm -rf $(SOURCE_DIR)
 	rm -rf build
+	rm -rf include
 
 include $(shell rospack find mk)/cmake.mk
