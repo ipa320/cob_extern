@@ -12,30 +12,30 @@ include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
 rosbuild_init()
 
 include_directories(
-    oodl
+    build/janpaulus-BRICS_OODL-e08295d
 )
 
 SET(OODL_SickS300_SRC
-  oodl/generic/Errors.cpp
-  oodl/generic/Logger.cpp
-  oodl/generic-laser-scanner/LaserScanner.cpp
-  oodl/generic-laser-scanner/LaserScannerData.cpp
-  oodl/generic-laser-scanner/LaserScannerConfiguration.cpp
-  oodl/generic-laser-scanner/LaserScannerDataWithIntensities.cpp
-  oodl/sick-s300/SickS300.cpp
-  oodl/sick-s300/ScannerSickS300.cpp
-  oodl/sick-s300/SerialIO.cpp
+  build/janpaulus-BRICS_OODL-e08295d/generic/Errors.cpp
+  build/janpaulus-BRICS_OODL-e08295d/generic/Logger.cpp
+  build/janpaulus-BRICS_OODL-e08295d/generic-laser-scanner/LaserScanner.cpp
+  build/janpaulus-BRICS_OODL-e08295d/generic-laser-scanner/LaserScannerData.cpp
+  build/janpaulus-BRICS_OODL-e08295d/generic-laser-scanner/LaserScannerConfiguration.cpp
+  build/janpaulus-BRICS_OODL-e08295d/generic-laser-scanner/LaserScannerDataWithIntensities.cpp
+  build/janpaulus-BRICS_OODL-e08295d/sick-s300/SickS300.cpp
+  build/janpaulus-BRICS_OODL-e08295d/sick-s300/ScannerSickS300.cpp
+  build/janpaulus-BRICS_OODL-e08295d/sick-s300/SerialIO.cpp
 )
 
 set(OODL_HOKUYO_URG_SRC
-  oodl/generic/Errors.cpp
-  oodl/generic/Logger.cpp
-  oodl/generic-laser-scanner/LaserScanner.cpp
-  oodl/generic-laser-scanner/LaserScannerData.cpp
-  oodl/generic-laser-scanner/LaserScannerConfiguration.cpp
-  oodl/generic-laser-scanner/LaserScannerDataWithIntensities.cpp
-  oodl/hokuyo-urg/HokuyoURG.cpp
-  oodl/hokuyo-urg/HokuyoURGConfiguration.cpp
+  build/janpaulus-BRICS_OODL-e08295d/generic/Errors.cpp
+  build/janpaulus-BRICS_OODL-e08295d/generic/Logger.cpp
+  build/janpaulus-BRICS_OODL-e08295d/generic-laser-scanner/LaserScanner.cpp
+  build/janpaulus-BRICS_OODL-e08295d/generic-laser-scanner/LaserScannerData.cpp
+  build/janpaulus-BRICS_OODL-e08295d/generic-laser-scanner/LaserScannerConfiguration.cpp
+  build/janpaulus-BRICS_OODL-e08295d/generic-laser-scanner/LaserScannerDataWithIntensities.cpp
+  build/janpaulus-BRICS_OODL-e08295d/hokuyo-urg/HokuyoURG.cpp
+  build/janpaulus-BRICS_OODL-e08295d/hokuyo-urg/HokuyoURGConfiguration.cpp
 )
 
 #set the default path for built executables to the "bin" directory
@@ -53,11 +53,11 @@ rosbuild_add_boost_directories()
 #common commands for building c++ executables and libraries
 # SickS300
 rosbuild_add_library(${PROJECT_NAME}_s300 ${OODL_SickS300_SRC})
-rosbuild_add_executable(${PROJECT_NAME}_sick_test oodl/sick-s300/applications/Test.cpp)
+rosbuild_add_executable(${PROJECT_NAME}_sick_test build/janpaulus-BRICS_OODL-e08295d/sick-s300/applications/Test.cpp)
 rosbuild_link_boost(${PROJECT_NAME}_sick_test thread)
 target_link_libraries(${PROJECT_NAME}_sick_test ${PROJECT_NAME}_s300)
 
 # HokuyoURG
 rosbuild_add_library(${PROJECT_NAME}_hokuyo ${OODL_HOKUYO_URG_SRC})
-rosbuild_add_executable(${PROJECT_NAME}_hokuyo_test oodl/hokuyo-urg/applications/Test.cpp ${OODL_HOKUYO_URG_SRC})
+rosbuild_add_executable(${PROJECT_NAME}_hokuyo_test build/janpaulus-BRICS_OODL-e08295d/hokuyo-urg/applications/Test.cpp ${OODL_HOKUYO_URG_SRC})
 rosbuild_link_boost(${PROJECT_NAME}_hokuyo_test thread)
