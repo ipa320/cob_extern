@@ -4,7 +4,7 @@ TARBALL 	= build/libphidget_2.1.7.20100621.tar.gz
 TARBALL_URL = https://code.ros.org/svn/release/download/thirdparty/libphidget_2.1.7.20100621.tar.gz
 UNPACK_CMD  = tar zxf
 SOURCE_DIR 	= build/libphidget-2.1.7.20100621
-MD5SUM_FILE = janpaulus-BRICS_OODL-e08295d.tar.gz.md5sum
+MD5SUM_FILE = libphidget_2.1.7.20100621.tar.gz.md5sum
 
 include $(shell rospack find mk)/download_unpack_build.mk
 
