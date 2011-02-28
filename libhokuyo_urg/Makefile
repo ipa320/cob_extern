@@ -1,14 +1,14 @@
-all: urg
+all: installed
 
 TARBALL 	= build/urg-0.8.11.zip
 TARBALL_URL = https://code.ros.org/svn/release/download/thirdparty/urg-0.8.11.zip
-SOURCE_DIR	= build/urg-0.8.11
 UNPACK_CMD 	= unzip
+SOURCE_DIR	= build/urg-0.8.11
 MD5SUM_FILE = urg-0.8.11.zip.md5sum
 
 include $(shell rospack find mk)/download_unpack_build.mk
 
-urg: $(SOURCE_DIR)/unpacked
+installed: $(SOURCE_DIR)/unpacked
 	mkdir -p include/libhokuyo_urg
 	mkdir -p lib
 	cd $(SOURCE_DIR) && ./configure && make $(ROS_PARALLEL_JOBS)

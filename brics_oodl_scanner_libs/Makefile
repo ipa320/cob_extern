@@ -4,7 +4,6 @@ TARBALL     = build/janpaulus-BRICS_OODL-e08295d.tar.gz
 TARBALL_URL = https://code.ros.org/svn/release/download/thirdparty/janpaulus-BRICS_OODL-e08295d.tar.gz
 UNPACK_CMD  = tar zxf
 SOURCE_DIR  = build/janpaulus-BRICS_OODL-e08295d
-#TARBALL_PATCH = matrix.patch
 MD5SUM_FILE = janpaulus-BRICS_OODL-e08295d.tar.gz.md5sum
 
 include $(shell rospack find mk)/download_unpack_build.mk

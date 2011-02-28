@@ -1,12 +1,16 @@
-all: libpcan
+all: installed
 
-TARBALL = build/peak-linux-driver-6.11.tar.gz
+TARBALL 	= build/peak-linux-driver-6.11.tar.gz
 TARBALL_URL = https://code.ros.org/svn/release/download/thirdparty/peak-linux-driver.6.11.tar.gz
-SOURCE_DIR = build/peak-linux-driver-6.11
+UNPACK_CMD  = tar zxf
+SOURCE_DIR	= build/peak-linux-driver-6.11
+MD5SUM_FILE = peak-linux-driver.6.11.tar.gz.md5sum
+
 KERNEL_VER=/usr/src/linux-headers-"`uname -r`"
+
 include $(shell rospack find mk)/download_unpack_build.mk
 
-libpcan: $(SOURCE_DIR)/unpacked
+installed: $(SOURCE_DIR)/unpacked
 	# build
 	cd $(SOURCE_DIR) && make KERNEL_LOCATION=$(KERNEL_VER) DBG=NO_DEBUG MOD=MODVERSIONS PAR=NO_PARPORT_SUBSYSTEM USB=USB_SUPPORT PCI=PCI_SUPPORT DNG=NO_DONGLE_SUPPORT ISA=NO_ISA_SUPPORT PCC=NO_PCCARD_SUPPORT NET=NO_NETDEV_SUPPORT RT=NO_RT
 
