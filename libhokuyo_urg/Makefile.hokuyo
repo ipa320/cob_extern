@@ -7,7 +7,7 @@ UNPACK_CMD = unzip
 include $(shell rospack find mk)/download_unpack_build.mk
 
 urg: $(SOURCE_DIR)/unpacked
-	mkdir -p include/urg_driver
+	mkdir -p include/libhokuyo_urg
 	mkdir -p lib
 	cd $(SOURCE_DIR) && ./configure && make $(ROS_PARALLEL_JOBS)
 	cp $(SOURCE_DIR)/src/cpp/urg/.libs/liburg.so* lib
@@ -18,7 +18,7 @@ urg: $(SOURCE_DIR)/unpacked
 	cp $(SOURCE_DIR)/src/cpp/geometry/.libs/liburg_geometry.so* lib
 	cp $(SOURCE_DIR)/src/cpp/common/.libs/liburg_common.so* lib
 	cp $(SOURCE_DIR)/src/cpp/coordinate/.libs/liburg_coordinate.so* lib
-	cp $(SOURCE_DIR)/include/cpp/* include/urg_driver/
+	cp $(SOURCE_DIR)/include/cpp/* include/libhokuyo_urg/
 	
 clean:
 	rm -rf src $(SOURCE_DIR) urg

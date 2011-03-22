@@ -1,0 +1,19 @@
+<package>
+  <description brief="libhokuyo_urg">
+
+     libhokuyo_urg
+
+  </description>
+  <author>Alexander Bubeck</author>
+  <license>proprietary</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/libhokuyo_urg</url>
+
+  <rosdep name="libsdl-net"/>
+  <rosdep name="unzip"/>
+
+  <export>
+    <cpp cflags="-I${prefix}/include -I${prefix}/include/libhokuyo_urg" lflags="-Wl,-rpath,${prefix}/lib -L${prefix}/lib -lurg -lurg_connection -lurg_connection_sdl -lurg_monitor -lurg_system -lurg_geometry -lurg_common -lurg_coordinate"/>
+  </export>
+
+</package>
