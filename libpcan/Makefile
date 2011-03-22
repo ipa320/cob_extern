@@ -1,8 +1,8 @@
 all: libpcan
 
-TARBALL = build/peak-linux-driver-6.11.tar.gz
-TARBALL_URL = http://p103112.typo3server.info/fileadmin/media/linux/files/peak-linux-driver.6.11.tar.gz
-SOURCE_DIR = build/peak-linux-driver-6.11
+TARBALL = build/peak-linux-driver-6.24.tar.gz
+TARBALL_URL = http://www.peak-system.com/fileadmin/media/linux/files/peak-linux-driver-6.24.tar.gz
+SOURCE_DIR = build/peak-linux-driver-6.24
 KERNEL_VER=/usr/src/linux-headers-"`uname -r`"
 include $(shell rospack find mk)/download_unpack_build.mk
 
