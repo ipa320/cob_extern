@@ -9,3 +9,6 @@ unzip:
   
 libsdl-net:
   ubuntu: libsdl-net1.2-dev
+
+cvs:
+  ubuntu: cvs
