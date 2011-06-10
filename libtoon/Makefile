@@ -16,7 +16,7 @@ installed: $(SOURCE_DIR)/unpacked
 	mkdir -p common/include
 	mkdir -p common/include/libtoon
 	cp -r $(SOURCE_DIR)/* common/include/libtoon
-	cd common/include && ln -s libtoon TooN
+	cd common/include && ln -sf libtoon TooN
 clean:
 	rm -rf common $(SOURCE_DIR) $(TARBALL)
 wipe: clean
