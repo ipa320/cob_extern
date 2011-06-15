@@ -1,0 +1,18 @@
+<package>
+  <description brief="libtoon">
+
+     libtoon
+
+  </description>
+  <author>Florian Weisshardt</author>
+  <license>LGPL</license>
+  <review status="unreviewed" notes=""/>
+  <url>savannah.nongnu.org/projects/toon</url>
+
+  <rosdep name="cvs"/>
+
+  <export>
+    <cpp cflags="-I${prefix}/common/include -I${prefix}/common/include/TooN"/>
+  </export>
+
+</package>

@@ -1,0 +1,18 @@
+all: libtoon
+
+SOURCE_DIR=build
+
+libtoon:
+	mkdir -p $(SOURCE_DIR)
+	rm -rf common
+	mkdir -p common
+	mkdir -p common/include
+	mkdir -p common/include/libtoon
+	cd $(SOURCE_DIR) && cvs -z3 -d:pserver:anoncvs@cvs.savannah.nongnu.org:/cvsroot/toon co -D"10 April 2010" TooN
+	cd $(SOURCE_DIR)/TooN && ./configure
+	mv $(SOURCE_DIR)/TooN/* common/include/libtoon
+	cd common/include && ln -s libtoon TooN
+clean:
+	rm -rf common $(SOURCE_DIR)
+wipe: clean
+	rm -rf common $(SOURCE_DIR)
