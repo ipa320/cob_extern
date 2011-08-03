@@ -5,7 +5,6 @@
 #include <cvd/internal/is_pod.h>
 #include <cvd/internal/pixel_traits.h>
 #include <cvd/internal/convert_pixel_types.h>
-#include <sys/types.h>
 
 namespace CVD { //begin namespace
 

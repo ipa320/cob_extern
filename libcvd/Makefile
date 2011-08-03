@@ -10,7 +10,7 @@ include $(shell rospack find mk)/download_unpack_build.mk
 installed: $(SOURCE_DIR)/unpacked
 	# build
 	cd $(SOURCE_DIR) && ./configure
-	patch utility.patch
+	cd $(SOURCE_DIR)/cvd && patch < ../../../utility.patch
 	cd $(SOURCE_DIR) && make
 	
 	# copy to common
