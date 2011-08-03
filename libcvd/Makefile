@@ -7,21 +7,23 @@ SOURCE_DIR = build/libcvd-20100511
 
 include $(shell rospack find mk)/download_unpack_build.mk
 
-installed: $(SOURCE_DIR)/unpacked
+installed: wipe $(SOURCE_DIR)/unpacked
 	# build
-	cd $(SOURCE_DIR) && ./configure
-	cd $(SOURCE_DIR)/cvd && patch < ../../../utility.patch
-	cd $(SOURCE_DIR) && make
+	cd $(SOURCE_DIR) && export CPATH=`rospack find libtoon`/common/include/ && ./configure
+	cd $(SOURCE_DIR)/cvd && patch -N < ../../../utility.patch
+	cd $(SOURCE_DIR) && export CPATH=`rospack find libtoon`/common/include/ && make
 	
 	# copy to common
 	mkdir -p common
 	mkdir -p common/include
 	mkdir -p common/include/libcvd
 	cp -r $(SOURCE_DIR)/cvd/* common/include/libcvd
-	#cd common/include && ln -sf libcvd cvd
+	cd common/include && ln -sf libcvd cvd
 	mkdir -p common/lib
-	#cp -r
+	cp $(SOURCE_DIR)/*.so* common/lib
+	touch ROS_NOBUILD
 clean:
 	rm -rf common $(SOURCE_DIR) $(TARBALL)
+	rm -rf ROS_NOBUILD
 wipe: clean
 	-rm -rf build
