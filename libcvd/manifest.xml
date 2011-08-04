@@ -1,0 +1,20 @@
+<package>
+  <description brief="libcvd">
+
+     This package wraps the libcvd to use it as a ros dependency
+
+  </description>
+  <author>Edward Rosten, Paul Smith, Tom Drummond, Gerhard Reitmayr, Ethan Eade, Timothy Gan, Chris Kemp, Georg Klein</author>
+  <license>LGPL</license>
+  <review status="unreviewed" notes=""/>
+  <url>savannah.nongnu.org/projects/libcvd</url>
+
+  <depend package="libtoon"/>
+
+  <rosdep name="cvs"/>
+
+  <export>
+    <cpp cflags="-I${prefix}/common/include -I${prefix}/common/include/cvd" lflags="-L${prefix}/common/lib"/>
+  </export>
+
+</package>
