@@ -1,0 +1,10 @@
+--- build/libcvd-20100511/cvd/utility.h	2009-03-17 20:12:37.000000000 +0100
++++ utility.h.patched	2011-08-03 12:25:50.755229012 +0200
+@@ -5,6 +5,7 @@
+ #include <cvd/internal/is_pod.h>
+ #include <cvd/internal/pixel_traits.h>
+ #include <cvd/internal/convert_pixel_types.h>
++#include <sys/types.h>
+ 
+ namespace CVD { //begin namespace
+ 
