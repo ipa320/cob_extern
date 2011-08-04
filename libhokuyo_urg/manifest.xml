@@ -1,7 +1,7 @@
 <package>
   <description brief="libhokuyo_urg">
 
-     libhokuyo_urg
+     This package wraps the libhokuyo_urg to use it as a ros dependency
 
   </description>
   <author>Alexander Bubeck</author>
