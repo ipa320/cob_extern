@@ -1,7 +1,7 @@
 <package>
   <description brief="brics_oodl_scanner_libs">
 
-     brics_oodl_scanner_libs
+     This package wraps the brics_oodl_scanner_libs to use it as a ros dependency
 
   </description>
   <author>Alexander Bubeck</author>
