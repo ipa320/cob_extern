@@ -5,10 +5,9 @@
 
   </description>
   <author>Maintained by Florian Weisshardt</author>
-  <license>BSD,LGPL,proprietary</license>
+  <license>LGPL,proprietary</license>  
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/cob_extern</url>
-
   <depend stack="ros" />
 
 </stack>
