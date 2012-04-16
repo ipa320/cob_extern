@@ -1,7 +1,7 @@
-linux-headers:
+linux-headers-generic:
   ubuntu: linux-headers-generic
 
-libusb: 
+libusb-dev: 
   ubuntu: libusb-dev
 
 unzip: 
