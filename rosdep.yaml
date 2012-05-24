@@ -9,3 +9,6 @@ unzip:
 
 cvs:
   ubuntu: cvs
+
+libpopt-dev:
+  libpopt-dev
