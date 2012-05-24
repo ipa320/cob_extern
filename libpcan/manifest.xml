@@ -10,6 +10,7 @@
   <url>http://p103112.typo3server.info/fileadmin/media/linux/index.htm</url>
 
   <rosdep name="linux-headers-generic"/>
+  <rosdep name="libpopt-dev"/>
 
   <export>
     <cpp cflags="-I${prefix}/common/include -I${prefix}/common/include/libpcan" lflags="-Wl,-rpath,${prefix}/common/lib -L${prefix}/common/lib -lpcan"/>
