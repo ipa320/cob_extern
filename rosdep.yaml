@@ -11,4 +11,4 @@ cvs:
   ubuntu: cvs
 
 libpopt-dev:
-  libpopt-dev
+  ubuntu: libpopt-dev
