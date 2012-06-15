@@ -7,3 +7,5 @@ clean:
 	rm common/lib/*.a
 wipe: clean
 	-rm common/lib/*.a
+
+include $(shell rospack find mk)/cmake.mk

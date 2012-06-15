@@ -17,3 +17,5 @@ clean:
 	rm -rf common $(SOURCE_DIR) $(TARBALL)
 wipe: clean
 	-rm -rf build
+
+include $(shell rospack find mk)/cmake.mk

@@ -22,3 +22,4 @@ clean:
 wipe: clean
 	-rm -rf common
 
+include $(shell rospack find mk)/cmake.mk
