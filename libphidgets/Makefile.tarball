@@ -1,10 +1,11 @@
 all: installed
 
-TARBALL		= build/libphidget_2.1.7.20100621.tar.gz
-TARBALL_URL 	= https://code.ros.org/svn/release/download/thirdparty/libphidget_2.1.7.20100621.tar.gz
+TARBALL		= build/libphidget.tar.gz
+#TARBALL_URL 	= https://code.ros.org/svn/release/download/thirdparty/libphidget_2.1.7.20100621.tar.gz
+TARBALL_URL 	= http://www.phidgets.com/downloads/libraries/libphidget.tar.gz
 UNPACK_CMD  	= tar zxf
-SOURCE_DIR 	= build/libphidget-2.1.7.20100621
-MD5SUM_FILE 	= libphidget_2.1.7.20100621.tar.gz.md5sum
+SOURCE_DIR 	= build/libphidget-2.1.8.20130320
+MD5SUM_FILE 	= libphidget.tar.gz.md5sum
 
 include $(shell rospack find mk)/download_unpack_build.mk
 
@@ -18,4 +19,3 @@ clean:
 wipe: clean
 	-rm -rf build
 
-include $(shell rospack find mk)/cmake.mk
