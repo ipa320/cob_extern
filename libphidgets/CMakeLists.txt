@@ -8,13 +8,8 @@ if(_make_failed)
   message(FATAL_ERROR "Building of libphidgets failed")
 endif(_make_failed)
 
-
-#set the default path for built executables to the "bin" directory
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-#set the default path for built libraries to the "lib" directory
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
-
-
+execute_process(COMMAND /bin/cp ${PROJECT_SOURCE_DIR}/lib/libphidget21.so.0  ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/libphidget21.so)
+message(STATUS "Copying libs to ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}")
 
 
 # TODO: fill in what other packages will need to use this package
@@ -25,6 +20,6 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 catkin_package(
     DEPENDS libusb-dev
     CATKIN_DEPENDS # TODO
-    INCLUDE_DIRS # TODO include
-    LIBRARIES # TODO
+    INCLUDE_DIRS include
+    LIBRARIES phidget21
 )
