@@ -8,7 +8,7 @@
   <license>proprietary</license>
 
   <url type="website">http://ros.org/wiki/cob_extern</url>
-  <!-- <url type="bugtracker"></url> -->
+  <url type="bugtracker">http://care-o-bot.org/trac</url>
 
   <maintainer email="fmw@ipa.fhg.de">Florian Weisshardt</maintainer>
   <author email="fmw@ipa.fhg.de">Florian Weisshardt</author>
