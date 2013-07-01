@@ -7,7 +7,10 @@ if(_make_failed)
   message(FATAL_ERROR "Building of libntcan failed")
 endif(_make_failed) 
 
-execute_process(COMMAND /bin/cp ${PROJECT_SOURCE_DIR}/common/lib/libntcan.so.3.1.7  ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/libntcan.so)
+execute_process(COMMAND /bin/cp ${PROJECT_SOURCE_DIR}/common/lib/libntcan.so  ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/)
+execute_process(COMMAND /bin/cp ${PROJECT_SOURCE_DIR}/common/lib/libntcan.so.3  ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/)
+execute_process(COMMAND /bin/cp ${PROJECT_SOURCE_DIR}/common/lib/libntcan.so.3.1.7 
+${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/)
 message(STATUS "Copying libs to ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}")
 
 

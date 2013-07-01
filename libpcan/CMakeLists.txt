@@ -9,6 +9,8 @@ endif(_make_failed)
 
 
 execute_process(COMMAND /bin/cp ${PROJECT_SOURCE_DIR}/common/lib/libpcan.so  ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/)
+execute_process(COMMAND /bin/cp ${PROJECT_SOURCE_DIR}/common/lib/libpcan.so.0  ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/)
+execute_process(COMMAND /bin/cp ${PROJECT_SOURCE_DIR}/common/lib/libpcan.so.0.6  ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/)
 message(STATUS "Copying libs to ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}")
 
 # TODO: fill in what other packages will need to use this package
