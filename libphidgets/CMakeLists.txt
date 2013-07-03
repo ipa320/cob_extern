@@ -15,7 +15,7 @@ message(STATUS "Copying libs to ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTI
 add_library(phidget21 SHARED)
 set_target_properties(phidget21 PROPERTIES LINKER_LANGUAGE CXX)
 
-add_dependencies(phidget21 build_phidget21)
+add_dependencies(copy_phidget21 build_phidget21)
 add_dependencies(phidget21 copy_phidget21)
 
 
