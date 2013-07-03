@@ -1,0 +1,39 @@
+diff -auB build/peak-linux-driver-7.6/driver/src/pcan_fifo.c build.patched/peak-linux-driver-7.6/driver/src/pcan_fifo.c
+--- build/peak-linux-driver-7.6/driver/src/pcan_fifo.c	2011-07-19 11:26:14.000000000 +0200
++++ build.patched/peak-linux-driver-7.6/driver/src/pcan_fifo.c	2013-04-12 15:04:52.456973031 +0200
+@@ -44,7 +44,8 @@
+ #include <linux/errno.h>    // error codes
+ #include <linux/string.h>   // memcpy
+ #include <linux/sched.h>
+-#include <asm/system.h>     // cli(), save_flags(), restore_flags()
++// obsolete from kernel 3.4, causing compilation to fail
++//#include <asm/system.h>     // cli(), save_flags(), restore_flags()
+ #include <linux/spinlock.h>
+ 
+ #include <src/pcan_fifo.h>
+diff -auB build/peak-linux-driver-7.6/driver/src/pcan_fops.c build.patched/peak-linux-driver-7.6/driver/src/pcan_fops.c
+--- build/peak-linux-driver-7.6/driver/src/pcan_fops.c	2012-03-08 12:25:10.000000000 +0100
++++ build.patched/peak-linux-driver-7.6/driver/src/pcan_fops.c	2013-04-12 15:04:38.456903607 +0200
+@@ -58,7 +58,8 @@
+ #include <linux/fcntl.h>    // O_ACCMODE
+ #include <linux/pci.h>      // all about pci
+ #include <linux/capability.h> // all about restrictions
+-#include <asm/system.h>     // cli(), *_flags
++// obsolete from kernel 3.4, causing compilation to fail
++//#include <asm/system.h>     // cli(), *_flags
+ #include <asm/uaccess.h>    // copy_...
+ #include <linux/delay.h>    // mdelay()
+ #include <linux/poll.h>     // poll() and select()
+diff -auB build/peak-linux-driver-7.6/driver/src/pcan_main.c build.patched/peak-linux-driver-7.6/driver/src/pcan_main.c
+--- build/peak-linux-driver-7.6/driver/src/pcan_main.c	2012-03-15 10:44:13.000000000 +0100
++++ build.patched/peak-linux-driver-7.6/driver/src/pcan_main.c	2013-04-12 15:04:20.688815505 +0200
+@@ -66,7 +66,8 @@
+ #include <linux/fcntl.h>    // O_ACCMODE
+ #include <linux/capability.h> // all about restrictions
+ #include <linux/param.h>    // because of HZ
+-#include <asm/system.h>     // cli(), *_flags
++// obsolete from kernel 3.4, causing compilation to fail
++//#include <asm/system.h>     // cli(), *_flags
+ #include <asm/uaccess.h>    // copy_...
+ 
+ #include <src/pcan_main.h>
