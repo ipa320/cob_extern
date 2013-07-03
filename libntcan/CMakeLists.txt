@@ -22,6 +22,6 @@ message(STATUS "Copying libs to ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTI
 catkin_package(
     DEPENDS  # TODO
     CATKIN_DEPENDS # TODO
-    INCLUDE_DIRS common/include 
+    INCLUDE_DIRS common/include common/include/libntcan
     LIBRARIES ntcan
 )
