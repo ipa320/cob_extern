@@ -2,14 +2,22 @@ cmake_minimum_required(VERSION 2.8.3)
 project(libphidgets)
 
 
-execute_process(COMMAND cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball
-          RESULT_VARIABLE _make_failed)
-if(_make_failed)
-  message(FATAL_ERROR "Building of libphidgets failed")
-endif(_make_failed)
+add_custom_target(
+    build_phidget21 ALL
+    COMMAND cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball)
 
-execute_process(COMMAND /bin/cp ${PROJECT_SOURCE_DIR}/lib/libphidget21.so.0  ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/libphidget21.so)
+add_custom_target(
+    copy_phidget21 ALL
+    COMMAND cmake -E copy ${PROJECT_SOURCE_DIR}/lib/libphidget21.so.0  ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/libphidget21.so
+)
 message(STATUS "Copying libs to ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}")
+
+add_library(phidget21 SHARED)
+set_target_properties(phidget21 PROPERTIES LINKER_LANGUAGE CXX)
+
+add_dependencies(phidget21 build_phidget21)
+add_dependencies(phidget21 copy_phidget21)
+
 
 
 # TODO: fill in what other packages will need to use this package
@@ -19,7 +27,14 @@ message(STATUS "Copying libs to ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTI
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 catkin_package(
     DEPENDS libusb-dev
-    CATKIN_DEPENDS # TODO
     INCLUDE_DIRS include
     LIBRARIES phidget21
 )
+
+
+## Mark executables and/or libraries for installation
+#nstall(TARGETS 
+# ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+# LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+# RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+#
