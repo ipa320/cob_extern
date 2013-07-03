@@ -2,17 +2,34 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(libntcan)
 
-execute_process(COMMAND cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball RESULT_VARIABLE _make_failed)
-if(_make_failed)
-  message(FATAL_ERROR "Building of libntcan failed")
-endif(_make_failed) 
 
-execute_process(COMMAND /bin/cp ${PROJECT_SOURCE_DIR}/common/lib/libntcan.so  ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/)
-execute_process(COMMAND /bin/cp ${PROJECT_SOURCE_DIR}/common/lib/libntcan.so.3  ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/)
-execute_process(COMMAND /bin/cp ${PROJECT_SOURCE_DIR}/common/lib/libntcan.so.3.1.7 
-${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/)
-message(STATUS "Copying libs to ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}")
+if(“${CMAKE_SYSTEM_PROCESSOR}” STREQUAL “x86_64”)
+  message(STATUS "++++++++++++++++++++++++++ DETECTED 64 bit +++++++++++++++++++++++++++++++++++")
+  set(MYARCH "x86_64")
+else(“${CMAKE_SYSTEM_PROCESSOR}” STREQUAL “x86_64”)
+  message(STATUS "++++++++++++++++++++++++++ DETECTED 32 bit +++++++++++++++++++++++++++++++++++")
+  set(MYARCH "i686")
+endif(“${CMAKE_SYSTEM_PROCESSOR}” STREQUAL “x86_64”)
 
+message(STATUS "Copying ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/libntcan.so to ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/libntcan.so")
+
+execute_process(COMMAND /bin/cp ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/libntcan.so ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION})
+execute_process(COMMAND /bin/cp ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/libntcan.so.3 ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION})
+execute_process(COMMAND /bin/cp ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/libntcan.so.3.1.7 ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION})
+#add_custom_command(
+#    OUTPUT ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/libntcan.so.3
+#    COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/libntcan.so.3 ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/
+#    DEPENDS ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/libntcan.so.3
+#    )
+#add_custom_command(
+#    OUTPUT ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/libntcan.so.3.1.7
+#    COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/libntcan.so.3.1.7 ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/
+#    DEPENDS ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/libntcan.so.3.1.7
+#    )
+
+#add_library(ntcan SHARED IMPORTED DEPENDS ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/libntcan.so)
+#add_dependencies(ntcan copy_ntcan)
+#add_custom_target(ntcan DEPENDS ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/libntcan.so)
 
 # TODO: fill in what other packages will need to use this package
 ## DEPENDS: system dependencies of this project that dependent projects also need
