@@ -22,10 +22,12 @@ message(STATUS "Copying libs to ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTI
 add_library(pcan SHARED)
 set_target_properties(pcan PROPERTIES LINKER_LANGUAGE CXX)
 
-add_dependencies(pcan build_libpcan)
 add_dependencies(pcan copy_pcan)
 add_dependencies(pcan copy_pcan0)
 add_dependencies(pcan copy_pcan06)
+add_dependencies(copy_pcan build_libpcan)
+add_dependencies(copy_pcan0 build_libpcan)
+add_dependencies(copy_pcan06 build_libpcan)
 
 # TODO: fill in what other packages will need to use this package
 ## DEPENDS: system dependencies of this project that dependent projects also need
