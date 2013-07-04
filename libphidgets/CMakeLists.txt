@@ -10,13 +10,19 @@ add_custom_target(
     copy_phidget21 ALL
     COMMAND cmake -E copy ${PROJECT_SOURCE_DIR}/lib/libphidget21.so.0  ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/libphidget21.so
 )
+add_custom_target(
+    copy_phidget210 ALL
+    COMMAND cmake -E copy ${PROJECT_SOURCE_DIR}/lib/libphidget21.so.0  ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/libphidget21.so.0
+)
 message(STATUS "Copying libs to ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}")
 
 add_library(phidget21 SHARED)
 set_target_properties(phidget21 PROPERTIES LINKER_LANGUAGE CXX)
 
 add_dependencies(copy_phidget21 build_phidget21)
+add_dependencies(copy_phidget210 build_phidget21)
 add_dependencies(phidget21 copy_phidget21)
+add_dependencies(phidget21 copy_phidget210)
 
 
 
