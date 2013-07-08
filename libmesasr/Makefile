@@ -7,7 +7,7 @@ endif
 all: libmesasr
 
 libmesasr:
-	wget -N --tries=10 https://code.ros.org/svn/release/download/thirdparty/$(FILENAME)
+	wget -N --tries=10 --no-check-certificate https://code.ros.org/svn/release/download/thirdparty/$(FILENAME)
 	mkdir -p TMP
 	dpkg-deb -x $(FILENAME) TMP
 	mkdir -p common/lib/
