@@ -3,6 +3,8 @@ before_install:
   - wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
   - sudo apt-get update
   - sudo apt-get install ros-groovy-ros
+  - sudo rosdep init
+  - rosdep update
 install:
   - rosdep install --from-paths .. --ignore-src --rosdistro hydro
   - source /opt/ros/groovy/setup.bash
