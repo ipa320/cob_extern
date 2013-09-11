@@ -1,3 +1,6 @@
 This is a repository for Care-O-bot external and third party packages.
 
 Installation instructions and tutorials can be found at http://www.care-o-bot.org.
+
+Build status:
+"!https://travis-ci.org/ipa-fmw/cob_extern.png!":https://travis-ci.org/ipa-fmw/cob_extern
