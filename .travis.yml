@@ -1,0 +1,12 @@
+before_install:
+  - sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu precise main" > /etc/apt/sources.list.d/ros-latest.list'
+  - wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
+  - sudo apt-get update
+  - sudo apt-get install ros-groovy-ros
+install:
+  - rosdep install --from-paths .. --ignore-src --rosdistro hydro
+  - source /opt/ros/groovy/setup.bash
+  - ls
+  - export ROS_PACKAGE_PATH=$PWD:$ROS_PACKAGE_PATH
+script:
+  - rosmake cob_extern
