@@ -5,10 +5,9 @@ before_install:
   - sudo apt-get install ros-groovy-ros
   - sudo rosdep init
   - rosdep update
-install:
-  - rosdep install --from-paths .. --ignore-src --rosdistro hydro
   - source /opt/ros/groovy/setup.bash
-  - ls
   - export ROS_PACKAGE_PATH=$PWD:$ROS_PACKAGE_PATH
+install:
+  - rosdep install *
 script:
-  - rosmake cob_extern
+  - rosmake *
