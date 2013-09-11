@@ -8,6 +8,6 @@ before_install:
   - source /opt/ros/groovy/setup.bash
   - export ROS_PACKAGE_PATH=$PWD:$ROS_PACKAGE_PATH
 install:
-  - rosdep install *
+  - rosdep install cob_extern
 script:
-  - rosmake *
+  - rosmake cob_extern
