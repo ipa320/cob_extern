@@ -1,7 +1,7 @@
 all: installed
 
 TARBALL		= build/libphidget.tar.gz
-TARBALL_URL 	= http://www.phidgets.com/downloads/libraries/libphidget-2.1.8.20130618.tar.gz
+TARBALL_URL 	= http://www.phidgets.com/downloads/libraries/libphidget_2.1.8.20130618.tar.gz
 UNPACK_CMD  	= tar zxf
 SOURCE_DIR 	= build/libphidget
 INITIAL_DIR	= build/libphidget-2.1.8.20130618
