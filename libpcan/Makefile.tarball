@@ -1,7 +1,6 @@
 all: installed
 
 TARBALL = build/peak-linux-driver-7.6.tar.gz
-#TARBALL_URL = https://www.peak-system.com/fileadmin/media/linux/files/peak-linux-driver-7.6.tar.gz
 TARBALL_URL = https://code.ros.org/svn/release/download/thirdparty/peak-linux-driver-7.6.tar.gz
 SOURCE_DIR = build/peak-linux-driver-7.6
 MD5SUM_FILE = peak-linux-driver-7.6.tar.gz.md5sum
@@ -27,4 +26,3 @@ clean:
 wipe: clean
 	-rm -rf build
 
-include $(shell rospack find mk)/cmake.mk

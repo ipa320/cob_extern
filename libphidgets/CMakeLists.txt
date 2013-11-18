@@ -1,30 +1,46 @@
-cmake_minimum_required(VERSION 2.4.6)
-include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
+cmake_minimum_required(VERSION 2.8.3)
+project(libphidgets)
 
-# Set the build type.  Options are:
-#  Coverage       : w/ debug symbols, w/o optimization, w/ code-coverage
-#  Debug          : w/ debug symbols, w/o optimization
-#  Release        : w/o debug symbols, w/ optimization
-#  RelWithDebInfo : w/ debug symbols, w/ optimization
-#  MinSizeRel     : w/o debug symbols, w/ optimization, stripped binaries
-#set(ROS_BUILD_TYPE RelWithDebInfo)
 
-rosbuild_init()
+add_custom_target(
+    build_phidget21 ALL
+    COMMAND cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball)
 
-#set the default path for built executables to the "bin" directory
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-#set the default path for built libraries to the "lib" directory
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+add_custom_target(
+    copy_phidget21 ALL
+    COMMAND cmake -E copy ${PROJECT_SOURCE_DIR}/lib/libphidget21.so.0  ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/libphidget21.so
+)
+add_custom_target(
+    copy_phidget210 ALL
+    COMMAND cmake -E copy ${PROJECT_SOURCE_DIR}/lib/libphidget21.so.0  ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/libphidget21.so.0
+)
+message(STATUS "Copying libs to ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}")
 
-#uncomment if you have defined messages
-#rosbuild_genmsg()
-#uncomment if you have defined services
-#rosbuild_gensrv()
+add_library(phidget21 SHARED)
+set_target_properties(phidget21 PROPERTIES LINKER_LANGUAGE CXX)
 
-#common commands for building c++ executables and libraries
-#rosbuild_add_library(${PROJECT_NAME} src/example.cpp)
-#target_link_libraries(${PROJECT_NAME} another_library)
-#rosbuild_add_boost_directories()
-#rosbuild_link_boost(${PROJECT_NAME} thread)
-#rosbuild_add_executable(example examples/example.cpp)
-#target_link_libraries(example ${PROJECT_NAME})
+add_dependencies(copy_phidget21 build_phidget21)
+add_dependencies(copy_phidget210 build_phidget21)
+add_dependencies(phidget21 copy_phidget21)
+add_dependencies(phidget21 copy_phidget210)
+
+
+
+# TODO: fill in what other packages will need to use this package
+## DEPENDS: system dependencies of this project that dependent projects also need
+## CATKIN_DEPENDS: catkin_packages dependent projects also need
+## INCLUDE_DIRS: 
+## LIBRARIES: libraries you create in this project that dependent projects also need
+catkin_package(
+    DEPENDS libusb-dev
+    INCLUDE_DIRS include
+    LIBRARIES phidget21
+)
+
+
+## Mark executables and/or libraries for installation
+#nstall(TARGETS 
+# ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+# LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+# RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+#
