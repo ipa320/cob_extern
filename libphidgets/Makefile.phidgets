@@ -1,12 +1,12 @@
 all: libphidget
 
-TARBALL = build/libphidget_2.1.7.20100621.tar.gz
-TARBALL_URL = http://www.phidgets.com/downloads/libraries/libphidget_2.1.7.20100621.tar.gz
-SOURCE_DIR = build/libphidget-2.1.7.20100621
+TARBALL = build/libphidget_2.1.8.20120716.tar.gz
+TARBALL_URL = http://www.phidgets.com/downloads/libraries/libphidget_2.1.8.20120716.tar.gz
+SOURCE_DIR = build/libphidget_2.1.8.20120716
 
 include $(shell rospack find mk)/download_unpack_build.mk
 
-libphidget: $(SOURCE_DIR)/unpacked
+libphidget: $(SOURCE_DIR)
 	cd $(SOURCE_DIR) && ./configure
 	cd $(SOURCE_DIR) && make
 clean:
