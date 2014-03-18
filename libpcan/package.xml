@@ -14,6 +14,8 @@
 
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>libpopt-dev</build_depend>
+  <build_depend>mk</build_depend>
+  <build_depend>rosbuild</build_depend>
   <build_depend>linux-headers-generic</build_depend>
 
   <export>

@@ -4,7 +4,7 @@ project(libphidgets)
 
 add_custom_target(
     build_phidget21 ALL
-    COMMAND cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball)
+    COMMAND cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.phidgets)
 
 add_custom_target(
     copy_phidget21 ALL

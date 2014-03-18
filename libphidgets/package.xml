@@ -12,6 +12,9 @@
   <author>Alexander Bubeck</author>
 
   <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>mk</build_depend>
+  <build_depend>rosbuild</build_depend>
+  <build_depend>libusb-dev</build_depend>
   <export>
     <cpp lflags="-L${prefix}/lib -lphidget21" cflags="-I${prefix}/include"/>
   </export>
