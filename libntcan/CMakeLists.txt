@@ -47,3 +47,8 @@ catkin_package(
     INCLUDE_DIRS common/include common/include/libntcan
     LIBRARIES ntcan
 )
+
+install(FILES common/lib/${MYARCH}/libntcan.so common/lib/${MYARCH}/libntcan.so.3 common/lib/${MYARCH}/libntcan.so.3.1.7
+  DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  )
+
