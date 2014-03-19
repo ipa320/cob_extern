@@ -2,8 +2,8 @@
 Changelog for package cob_extern
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.5.1 (2014-03-19)
+------------------
 * add changelogs
 * Update package.xml
 * Catkinized version of stack.

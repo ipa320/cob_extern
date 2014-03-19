@@ -2,8 +2,8 @@
 Changelog for package libntcan
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.5.1 (2014-03-19)
+------------------
 * add changelogs
 * added install flags for libntcan
 * gefrickel ported to cmake

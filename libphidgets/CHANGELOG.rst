@@ -2,8 +2,8 @@
 Changelog for package libphidgets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.5.1 (2014-03-19)
+------------------
 * add changelogs
 * gone back in phidget version and fixed hydro build
 * merge

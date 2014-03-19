@@ -2,8 +2,8 @@
 Changelog for package libpcan
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.5.1 (2014-03-19)
+------------------
 * add changelogs
 * Updatad libcan-7.9 installation and cleand some files.
 * missing builddep
