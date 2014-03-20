@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(libpcan)
 
+find_package(catkin REQUIRED)
+
 add_custom_target(
     build_libpcan ALL
     COMMAND cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball)
