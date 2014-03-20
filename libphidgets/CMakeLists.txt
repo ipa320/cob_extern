@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(libphidgets)
 
+find_package(catkin REQUIRED)
 
 add_custom_target(
     build_phidget21 ALL
