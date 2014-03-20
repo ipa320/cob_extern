@@ -2,8 +2,8 @@
 Changelog for package cob_extern
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.5.2 (2014-03-20)
+------------------
 * Merge branch 'hydro_dev' into hydro_release_candidate
 * Update package.xml
 * Contributors: Florian Weißhardt, ipa-fmw

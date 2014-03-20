@@ -2,8 +2,8 @@
 Changelog for package libphidgets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.5.2 (2014-03-20)
+------------------
 * Add missing rospack depends
 * Add missing find_package calls
 * Contributors: Scott K Logan
