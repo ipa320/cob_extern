@@ -2,6 +2,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(libntcan)
 
+find_package(catkin REQUIRED)
 
 if(“${CMAKE_SYSTEM_PROCESSOR}” STREQUAL “x86_64”)
   message(STATUS "++++++++++++++++++++++++++ DETECTED 64 bit +++++++++++++++++++++++++++++++++++")
@@ -47,3 +48,8 @@ catkin_package(
     INCLUDE_DIRS common/include common/include/libntcan
     LIBRARIES ntcan
 )
+
+install(FILES common/lib/${MYARCH}/libntcan.so common/lib/${MYARCH}/libntcan.so.3 common/lib/${MYARCH}/libntcan.so.3.1.7
+  DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  )
+

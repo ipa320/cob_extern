@@ -1,6 +1,6 @@
 <package>
   <name>libpcan</name>
-  <version>0.5.0</version>
+  <version>0.5.2</version>
   <description>This package wraps the libpcan to use it as a ros dependency</description>
   <!-- <maintainer>Florian Weisshardt</maintainer> -->
 
@@ -16,6 +16,8 @@
   <build_depend>libpopt-dev</build_depend>
   <build_depend>mk</build_depend>
   <build_depend>rosbuild</build_depend>
+  <build_depend>rospack</build_depend>
+  <build_depend>roslib</build_depend>
   <build_depend>linux-headers-generic</build_depend>
 
   <export>
