@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(libpcan)
 
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED COMPONENTS rosbuild roslib mk rosbuild rospack)
 
 add_custom_target(
     build_libpcan ALL
@@ -21,6 +21,15 @@ add_custom_target(
     )
 message(STATUS "Copying libs to ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}")
 
+catkin_package(
+    DEPENDS
+    CATKIN_DEPENDS # TODO
+    INCLUDE_DIRS common/include common/include/libpcan
+    LIBRARIES pcan
+)
+
+
+include_directories(${catkin_INCLUDE_DIRS})
 add_library(pcan SHARED)
 set_target_properties(pcan PROPERTIES LINKER_LANGUAGE CXX)
 
@@ -31,14 +40,15 @@ add_dependencies(copy_pcan build_libpcan)
 add_dependencies(copy_pcan0 build_libpcan)
 add_dependencies(copy_pcan06 build_libpcan)
 
-# TODO: fill in what other packages will need to use this package
-## DEPENDS: system dependencies of this project that dependent projects also need
-## CATKIN_DEPENDS: catkin_packages dependent projects also need
-## INCLUDE_DIRS:
-## LIBRARIES: libraries you create in this project that dependent projects also need
-catkin_package(
-    DEPENDS linux-headers-generic libpopt-dev
-    CATKIN_DEPENDS # TODO
-    INCLUDE_DIRS common/include common/include/libpcan
-    LIBRARIES pcan
+install(FILES common/lib/libpcan.so common/lib/libpcan.so.0 common/lib/libpcan.so.0.6
+  DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+)
+
+
+install(DIRECTORY common/include/
+  DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
+)
+
+install(DIRECTORY common/include/libpcan
+  DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
 )
