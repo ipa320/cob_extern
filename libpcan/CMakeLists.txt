@@ -44,6 +44,9 @@ install(FILES common/lib/libpcan.so common/lib/libpcan.so.0 common/lib/libpcan.s
   DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 )
 
+install(FILES common/include/libpcan/pcan.h common/include/libpcan/libpcan.h 
+  DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
+)  
 
 install(DIRECTORY common/include/
   DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}

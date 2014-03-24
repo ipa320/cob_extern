@@ -53,6 +53,11 @@ install(FILES common/lib/${MYARCH}/libntcan.so common/lib/${MYARCH}/libntcan.so.
   DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   )
 
+install(FILES common/include/libntcan/ntcan.h 
+  DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
+)  
+
+
 install(DIRECTORY common/include/
   DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
 )
