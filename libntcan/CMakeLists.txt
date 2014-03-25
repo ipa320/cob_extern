@@ -4,13 +4,18 @@ project(libntcan)
 
 find_package(catkin REQUIRED)
 
-if(“${CMAKE_SYSTEM_PROCESSOR}” STREQUAL “x86_64”)
-  message(STATUS "++++++++++++++++++++++++++ DETECTED 64 bit +++++++++++++++++++++++++++++++++++")
-  set(MYARCH "x86_64")
-else(“${CMAKE_SYSTEM_PROCESSOR}” STREQUAL “x86_64”)
-  message(STATUS "++++++++++++++++++++++++++ DETECTED 32 bit +++++++++++++++++++++++++++++++++++")
-  set(MYARCH "i686")
-endif(“${CMAKE_SYSTEM_PROCESSOR}” STREQUAL “x86_64”)
+FIND_PROGRAM(CMAKE_DPKG dpkg /bin /usr/bin /usr/local/bin )
+IF(CMAKE_DPKG)
+  EXEC_PROGRAM(dpkg ARGS --print-architecture OUTPUT_VARIABLE CMAKE_DPKG_ARCH)
+  IF(CMAKE_DPKG_ARCH MATCHES "amd64")
+    message(STATUS "++++++++++++++++++++++++++ DETECTED 64 bit +++++++++++++++++++++++++++++++++++")
+    set(MYARCH "x86_64")
+  ELSE(CMAKE_DPKG_ARCH MATCHES "amd64")
+    message(STATUS "++++++++++++++++++++++++++ DETECTED 32 bit +++++++++++++++++++++++++++++++++++")
+    set(MYARCH "i686")
+  ENDIF(CMAKE_DPKG_ARCH MATCHES "amd64")
+ENDIF(CMAKE_DPKG)
+
 
 message(STATUS "Copying ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/libntcan.so to ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/libntcan.so")
 
@@ -27,21 +32,6 @@ add_custom_target(
     COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/libntcan.so.3.1.7 ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}
     )
 
-add_library(ntcan SHARED)
-set_target_properties(ntcan PROPERTIES LINKER_LANGUAGE CXX)
-
-add_dependencies(ntcan build_ntcan)
-add_dependencies(ntcan build_ntcan3)
-add_dependencies(ntcan build_ntcan317)
-
-#add_dependencies(ntcan copy_ntcan)
-#add_custom_target(ntcan DEPENDS ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/libntcan.so)
-
-# TODO: fill in what other packages will need to use this package
-## DEPENDS: system dependencies of this project that dependent projects also need
-## CATKIN_DEPENDS: catkin_packages dependent projects also need
-## INCLUDE_DIRS: 
-## LIBRARIES: libraries you create in this project that dependent projects also need
 catkin_package(
     DEPENDS  # TODO
     CATKIN_DEPENDS # TODO
@@ -49,7 +39,30 @@ catkin_package(
     LIBRARIES ntcan
 )
 
+add_library(ntcan SHARED)
+set_target_properties(ntcan PROPERTIES LINKER_LANGUAGE CXX)
+
+add_dependencies(ntcan build_ntcan)
+add_dependencies(ntcan build_ntcan3)
+add_dependencies(ntcan build_ntcan317)
+
+
+
+
 install(FILES common/lib/${MYARCH}/libntcan.so common/lib/${MYARCH}/libntcan.so.3 common/lib/${MYARCH}/libntcan.so.3.1.7
   DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   )
+
+install(FILES common/include/libntcan/ntcan.h 
+  DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
+)  
+
+
+install(DIRECTORY common/include/
+  DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
+)
+
+install(DIRECTORY common/include/libntcan
+  DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
+)
 
