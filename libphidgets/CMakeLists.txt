@@ -39,7 +39,7 @@ add_dependencies(phidget21 copy_phidget21_plain)
 add_dependencies(phidget21 copy_phidget21)
 add_dependencies(phidget21 copy_phidget210)
 
-install(FILES lib/libphidget21.so lib/libphidget21.so.0 lib/libphidget21.so.0.0.0
+install(PROGRAMS lib/libphidget21.so lib/libphidget21.so.0 lib/libphidget21.so.0.0.0
   DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 )
 

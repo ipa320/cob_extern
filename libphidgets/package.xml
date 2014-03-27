@@ -17,6 +17,8 @@
   <build_depend>rospack</build_depend>
   <build_depend>roslib</build_depend>
   <build_depend>libusb-dev</build_depend>
+  <run_depend>libusb</run_depend>
+
   <export>
     <cpp lflags="-L${prefix}/lib -lphidget21" cflags="-I${prefix}/include"/>
   </export>
