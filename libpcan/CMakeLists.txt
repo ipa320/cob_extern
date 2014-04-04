@@ -1,30 +1,57 @@
-cmake_minimum_required(VERSION 2.4.6)
-include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
+cmake_minimum_required(VERSION 2.8.3)
+project(libpcan)
 
-# Set the build type.  Options are:
-#  Coverage       : w/ debug symbols, w/o optimization, w/ code-coverage
-#  Debug          : w/ debug symbols, w/o optimization
-#  Release        : w/o debug symbols, w/ optimization
-#  RelWithDebInfo : w/ debug symbols, w/ optimization
-#  MinSizeRel     : w/o debug symbols, w/ optimization, stripped binaries
-#set(ROS_BUILD_TYPE RelWithDebInfo)
+find_package(catkin REQUIRED COMPONENTS rosbuild roslib mk rosbuild rospack)
 
-rosbuild_init()
+add_custom_target(
+    build_libpcan ALL
+    COMMAND cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball)
 
-#set the default path for built executables to the "bin" directory
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-#set the default path for built libraries to the "lib" directory
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
-#uncomment if you have defined messages
-#rosbuild_genmsg()
-#uncomment if you have defined services
-#rosbuild_gensrv()
+add_custom_target(
+    copy_pcan ALL
+    COMMAND cmake -E copy ${PROJECT_SOURCE_DIR}/common/lib/libpcan.so  ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/)
+add_custom_target(
+    copy_pcan0 ALL
+    COMMAND cmake -E copy ${PROJECT_SOURCE_DIR}/common/lib/libpcan.so.0  ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/
+    )
+add_custom_target(
+    copy_pcan06 ALL
+    COMMAND cmake -E copy ${PROJECT_SOURCE_DIR}/common/lib/libpcan.so.0.6  ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/
+    )
+message(STATUS "Copying libs to ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}")
 
-#common commands for building c++ executables and libraries
-#rosbuild_add_library(${PROJECT_NAME} src/example.cpp)
-#target_link_libraries(${PROJECT_NAME} another_library)
-#rosbuild_add_boost_directories()
-#rosbuild_link_boost(${PROJECT_NAME} thread)
-#rosbuild_add_executable(example examples/example.cpp)
-#target_link_libraries(example ${PROJECT_NAME})
+catkin_package(
+    DEPENDS
+    CATKIN_DEPENDS # TODO
+    INCLUDE_DIRS common/include common/include/libpcan
+    LIBRARIES pcan
+)
+
+
+include_directories(${catkin_INCLUDE_DIRS})
+add_library(pcan SHARED)
+set_target_properties(pcan PROPERTIES LINKER_LANGUAGE CXX)
+
+add_dependencies(pcan copy_pcan)
+add_dependencies(pcan copy_pcan0)
+add_dependencies(pcan copy_pcan06)
+add_dependencies(copy_pcan build_libpcan)
+add_dependencies(copy_pcan0 build_libpcan)
+add_dependencies(copy_pcan06 build_libpcan)
+
+install(PROGRAMS common/lib/libpcan.so common/lib/libpcan.so.0 common/lib/libpcan.so.0.6
+  DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+)
+
+install(FILES common/include/libpcan/pcan.h common/include/libpcan/libpcan.h 
+  DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
+)  
+
+install(DIRECTORY common/include/
+  DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
+)
+
+install(DIRECTORY common/include/libpcan
+  DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
+)

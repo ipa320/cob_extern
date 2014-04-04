@@ -18,4 +18,3 @@ clean:
 wipe: clean
 	-rm -rf build
 
-include $(shell rospack find mk)/cmake.mk
