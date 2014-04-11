@@ -1,9 +1,9 @@
 all: installed
 
-TARBALL = build/peak-linux-driver.tar.gz
+TARBALL = build/peak-linux-driver-7.9.tar.gz
 TARBALL_URL = http://www.peak-system.com/fileadmin/media/linux/files/peak-linux-driver-7.9.tar.gz 
-SOURCE_DIR = build/peak-linux-driver
-INITIAL_DIR = build/peak-linux-driver-7.9
+#TARBALL_URL = https://code.ros.org/svn/release/download/thirdparty/peak-linux-driver-7.9.tar.gz 
+SOURCE_DIR = build/peak-linux-driver-7.9
 MD5SUM_FILE = peak-linux-driver-7.9.tar.gz.md5sum
 KERNEL_VER=/usr/src/linux-headers-"`uname -r`"
 
@@ -26,4 +26,3 @@ clean:
 	rm -rf common $(SOURCE_DIR) $(TARBALL)
 wipe: clean
 	-rm -rf build
-

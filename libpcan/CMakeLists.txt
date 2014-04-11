@@ -40,7 +40,7 @@ add_dependencies(copy_pcan build_libpcan)
 add_dependencies(copy_pcan0 build_libpcan)
 add_dependencies(copy_pcan06 build_libpcan)
 
-install(FILES common/lib/libpcan.so common/lib/libpcan.so.0 common/lib/libpcan.so.0.6
+install(PROGRAMS common/lib/libpcan.so common/lib/libpcan.so.0 common/lib/libpcan.so.0.6
   DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 )
 
