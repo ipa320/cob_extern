@@ -8,7 +8,7 @@
 
   <url type="website">http://ros.org/wiki/libphidgets</url>
   <!-- <url type="bugtracker"></url> -->
-  <maintainer email="aub@ipa.fhg.de">Alexander Bubeck</maintainer>
+  <maintainer email="benjamin.maidel@ipa.fraunhofer.de">Benjamin Maidel</maintainer>
   <author>Alexander Bubeck</author>
 
   <buildtool_depend>catkin</buildtool_depend>
