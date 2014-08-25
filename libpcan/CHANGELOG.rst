@@ -2,8 +2,8 @@
 Changelog for package libpcan
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.5.3 (2014-08-25)
+------------------
 * merge
 * fix install script
 * using version 7.9 of libpcan

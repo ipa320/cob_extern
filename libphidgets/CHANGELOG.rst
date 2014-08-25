@@ -2,8 +2,8 @@
 Changelog for package libphidgets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.5.3 (2014-08-25)
+------------------
 * Merge pull request `#39 <https://github.com/ipa320/cob_extern/issues/39>`_ from ipa-fmw/hydro_dev
   change maintainer
 * Update package.xml
