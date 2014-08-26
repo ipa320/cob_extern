@@ -2,6 +2,16 @@
 Changelog for package libphidgets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.5.3 (2014-08-25)
+------------------
+* Merge pull request `#39 <https://github.com/ipa320/cob_extern/issues/39>`_ from ipa-fmw/hydro_dev
+  change maintainer
+* Update package.xml
+* removed unused makefile
+* added checksum for new tarball
+* updated libphidget version
+* Contributors: Florian Weisshardt, Nadia Hammoudeh García, ipa-bnm
+
 0.5.2 (2014-03-20)
 ------------------
 * Add missing rospack depends

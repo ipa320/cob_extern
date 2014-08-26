@@ -2,6 +2,9 @@
 Changelog for package libntcan
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.5.3 (2014-08-25)
+------------------
+
 0.5.2 (2014-03-20)
 ------------------
 * Add missing find_package calls

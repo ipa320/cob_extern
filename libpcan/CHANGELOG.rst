@@ -2,6 +2,13 @@
 Changelog for package libpcan
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.5.3 (2014-08-25)
+------------------
+* merge
+* fix install script
+* using version 7.9 of libpcan
+* Contributors: ipa-fmw, ipa-nhg
+
 0.5.2 (2014-03-20)
 ------------------
 * Add missing rospack depends
