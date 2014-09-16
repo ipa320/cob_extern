@@ -2,6 +2,9 @@
 Changelog for package cob_extern
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.5.3 (2014-08-25)
 ------------------
 * Update package.xml
