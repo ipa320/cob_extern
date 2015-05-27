@@ -1,7 +1,7 @@
 all: installed
 
 TARBALL		= build/libphidget_2.1.8.20120716.tar.gz
-TARBALL_URL 	= https://code.ros.org/svn/release/download/thirdparty/libphidget_2.1.8.20120716.tar.gz
+TARBALL_URL 	= https://sourceforge.net/p/ros-dry-releases/code/HEAD/tree/download/thirdparty/libphidget_2.1.8.20120716.tar.gz?format=raw
 UNPACK_CMD  	= tar zxf
 SOURCE_DIR 	= build/libphidget-2.1.8.20120716
 MD5SUM_FILE 	= libphidget_2.1.8.20120716.tar.gz.md5sum
