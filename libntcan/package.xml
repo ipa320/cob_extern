@@ -1,6 +1,6 @@
 <package>
   <name>libntcan</name>
-  <version>0.6.0</version>
+  <version>0.6.1</version>
   <description>This package wraps the libntcan to use it as a ros dependency.</description>
   <!-- <maintainer>Florian Weisshardt</maintainer> -->
 

@@ -2,6 +2,12 @@
 Changelog for package libphidgets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.1 (2015-05-28)
+------------------
+* update libphidgets URL
+  This fixes `#45 <https://github.com/ipa320/cob_extern/issues/45>`_.
+* Contributors: Martin Günther
+
 0.6.0 (2014-09-16)
 ------------------
 
