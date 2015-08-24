@@ -16,7 +16,7 @@
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
@@ -130,7 +130,7 @@ DWORD CAN_Write(HANDLE hHandle, TPCANMsg* pMsgBuff);
 //****************************************************************************
 //  LINUX_CAN_Write_Timeout()
 //  writes a message to the CAN bus. If the (software) message buffer is full
-//  the current write request blocks until a write slot gets empty 
+//  the current write request blocks until a write slot gets empty
 //  or a timeout or a error occures.
 //  nMicroSeconds  > 0 -> Timeout in microseconds
 //  nMicroSeconds == 0 -> polling
@@ -145,15 +145,15 @@ DWORD CAN_Read(HANDLE hHandle, TPCANMsg* pMsgBuff);
 
 //****************************************************************************
 //  LINUX_CAN_Read()
-//  reads a message WITH TIMESTAMP from the CAN bus. If there is no message 
-//  to read the current request blocks until either a new message arrives 
+//  reads a message WITH TIMESTAMP from the CAN bus. If there is no message
+//  to read the current request blocks until either a new message arrives
 //  or a error occures.
 DWORD LINUX_CAN_Read(HANDLE hHandle, TPCANRdMsg* pMsgBuff);
 
 //****************************************************************************
 //  LINUX_CAN_Read_Timeout()
-//  reads a message WITH TIMESTAMP from the CAN bus. If there is no message 
-//  to read the current request blocks until either a new message arrives 
+//  reads a message WITH TIMESTAMP from the CAN bus. If there is no message
+//  to read the current request blocks until either a new message arrives
 //  or a timeout or a error occures.
 //  nMicroSeconds  > 0 -> Timeout in microseconds
 //  nMicroSeconds == 0 -> polling
@@ -183,7 +183,7 @@ int LINUX_CAN_FileHandle(HANDLE hHandle);
 //  LINUX_CAN_Extended_Status()
 //  get the same as CAN_Status() with additional informaton about pending reads or writes
 //
-//  There is a uncertainty of 1 message for "nPendingWrites" for a small amount 
+//  There is a uncertainty of 1 message for "nPendingWrites" for a small amount
 //  of time between the messages is put into the CAN sender and the telegram is
 //  successfuly sent or an error is thrown.
 DWORD LINUX_CAN_Extended_Status(HANDLE hHandle, int *nPendingReads, int *nPendingWrites);

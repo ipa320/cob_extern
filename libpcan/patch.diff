@@ -9,7 +9,7 @@ diff -auB build/peak-linux-driver-7.6/driver/src/pcan_fifo.c build.patched/peak-
 +// obsolete from kernel 3.4, causing compilation to fail
 +//#include <asm/system.h>     // cli(), save_flags(), restore_flags()
  #include <linux/spinlock.h>
- 
+
  #include <src/pcan_fifo.h>
 diff -auB build/peak-linux-driver-7.6/driver/src/pcan_fops.c build.patched/peak-linux-driver-7.6/driver/src/pcan_fops.c
 --- build/peak-linux-driver-7.6/driver/src/pcan_fops.c	2012-03-08 12:25:10.000000000 +0100
@@ -35,5 +35,5 @@ diff -auB build/peak-linux-driver-7.6/driver/src/pcan_main.c build.patched/peak-
 +// obsolete from kernel 3.4, causing compilation to fail
 +//#include <asm/system.h>     // cli(), *_flags
  #include <asm/uaccess.h>    // copy_...
- 
+
  #include <src/pcan_main.h>

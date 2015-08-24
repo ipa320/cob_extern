@@ -1,24 +1,24 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
- 
-#if defined(__stdcall)  
- #define CCONV __stdcall  	
-#else 
- #if defined(__BORLANDC__) || defined(_MSC_VER) 
-  #define CCONV __stdcall  
- #else 
-  #define CCONV 
- #endif 
-#endif 
- 
-#if !defined(__int64) 
-#if !defined(__BORLANDC__) && !defined(_MSC_VER) 
-typedef long long __int64; 
-#endif 
+
+#if defined(__stdcall)
+ #define CCONV __stdcall
+#else
+ #if defined(__BORLANDC__) || defined(_MSC_VER)
+  #define CCONV __stdcall
+ #else
+  #define CCONV
+ #endif
 #endif
 
- 
+#if !defined(__int64)
+#if !defined(__BORLANDC__) && !defined(_MSC_VER)
+typedef long long __int64;
+#endif
+#endif
+
+
 typedef struct _CPhidget *CPhidgetHandle;
 typedef struct _CPhidget_Timestamp {
  int seconds;
@@ -772,7 +772,7 @@ typedef struct _CPhidgetWeightSensor *CPhidgetWeightSensorHandle;
 #ifndef CPHIDGET_CONSTANTS
 #define CPHIDGET_CONSTANTS
 
-/** \defgroup phidconst Phidget Constants 
+/** \defgroup phidconst Phidget Constants
  * Various constants used throughout the library.
  * @{
  */
