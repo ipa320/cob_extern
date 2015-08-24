@@ -3,6 +3,12 @@ project(libphidgets)
 
 find_package(catkin REQUIRED COMPONENTS mk rospack)
 
+catkin_package(
+    DEPENDS libusb-dev
+    INCLUDE_DIRS include
+    LIBRARIES phidget21
+)
+
 add_custom_target(
     build_phidget21 ALL
     COMMAND cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.phidgets
@@ -15,19 +21,15 @@ add_custom_target(
 
 add_custom_target(
     copy_phidget21 ALL
-    COMMAND cmake -E copy ${PROJECT_SOURCE_DIR}/lib/libphidget21.so.0  ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/libphidget21.so
+    COMMAND cmake -E copy ${PROJECT_SOURCE_DIR}/lib/libphidget21.so.0  ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/libphidget21.so
 )
+
 add_custom_target(
     copy_phidget210 ALL
-    COMMAND cmake -E copy ${PROJECT_SOURCE_DIR}/lib/libphidget21.so.0  ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}/libphidget21.so.0
+    COMMAND cmake -E copy ${PROJECT_SOURCE_DIR}/lib/libphidget21.so.0  ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/libphidget21.so.0
 )
-message(STATUS "Copying libs to ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}")
 
-catkin_package(
-    DEPENDS libusb-dev
-    INCLUDE_DIRS include
-    LIBRARIES phidget21
-)
+message(STATUS "Copying libs to ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}")
 
 add_library(phidget21 SHARED)
 set_target_properties(phidget21 PROPERTIES LINKER_LANGUAGE CXX)
@@ -43,6 +45,6 @@ install(PROGRAMS lib/libphidget21.so lib/libphidget21.so.0 lib/libphidget21.so.0
   DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 )
 
-install(DIRECTORY include/
+install(DIRECTORY include/${PROJECT_NAME}/
   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 )
