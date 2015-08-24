@@ -1,19 +1,17 @@
-<package>
+<?xml version="1.0"?>
+<package format="2">
   <name>libntcan</name>
   <version>0.6.1</version>
   <description>This package wraps the libntcan to use it as a ros dependency.</description>
-  <!-- <maintainer>Florian Weisshardt</maintainer> -->
 
   <license>proprietary</license>
 
   <url type="website">http://www.esd-electronics.com</url>
-  <!-- <url type="bugtracker"></url> -->
   <maintainer email="fmw@ipa.fhg.de">Florian Weisshardt</maintainer>
   <author>Florian Weisshardt</author>
+
   <buildtool_depend>catkin</buildtool_depend>
+
   <build_depend>dpkg</build_depend>
 
-  <export>
-    <cpp lflags="-Wl,-rpath,${prefix}/common/lib -L${prefix}/common/lib -lntcan" cflags="-I${prefix}/common/include -I${prefix}/common/include/libntcan"/>
-  </export>
 </package>
