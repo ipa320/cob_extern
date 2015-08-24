@@ -1,12 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(libpcan)
 
-find_package(catkin REQUIRED COMPONENTS mk rospack)
-
-add_custom_target(
-    build_libpcan ALL
-    COMMAND cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball)
-
+find_package(catkin REQUIRED)
 
 catkin_package(
     INCLUDE_DIRS common/include
@@ -14,18 +9,26 @@ catkin_package(
 )
 
 add_custom_target(
+    build_libpcan ALL
+    COMMAND cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball
+)
+
+add_custom_target(
     copy_pcan ALL
     COMMAND cmake -E copy ${PROJECT_SOURCE_DIR}/common/lib/libpcan.so  ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/
 )
+
 add_custom_target(
     copy_pcan0 ALL
     COMMAND cmake -E copy ${PROJECT_SOURCE_DIR}/common/lib/libpcan.so.0  ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/
 )
+
 add_custom_target(
     copy_pcan06 ALL
     COMMAND cmake -E copy ${PROJECT_SOURCE_DIR}/common/lib/libpcan.so.0.6  ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/
 )
 message(STATUS "Copying libs to ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}")
+
 
 add_library(pcan SHARED)
 set_target_properties(pcan PROPERTIES LINKER_LANGUAGE CXX)
