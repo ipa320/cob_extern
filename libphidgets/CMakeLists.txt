@@ -1,11 +1,12 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(libphidgets)
 
-find_package(catkin REQUIRED COMPONENTS rosbuild roslib mk rosbuild rospack)
+find_package(catkin REQUIRED COMPONENTS mk rospack)
 
 add_custom_target(
     build_phidget21 ALL
-    COMMAND cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.phidgets)
+    COMMAND cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.phidgets
+)
 
 add_custom_target(
     copy_phidget21_plain ALL
@@ -28,7 +29,6 @@ catkin_package(
     LIBRARIES phidget21
 )
 
-include_directories(${catkin_INCLUDE_DIRS})
 add_library(phidget21 SHARED)
 set_target_properties(phidget21 PROPERTIES LINKER_LANGUAGE CXX)
 
@@ -44,10 +44,5 @@ install(PROGRAMS lib/libphidget21.so lib/libphidget21.so.0 lib/libphidget21.so.0
 )
 
 install(DIRECTORY include/
-  DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 )
-
-
-
-
-
