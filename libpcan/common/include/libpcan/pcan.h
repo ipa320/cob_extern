@@ -4,7 +4,7 @@
 //****************************************************************************
 // Copyright (C) 2001-2010  PEAK System-Technik GmbH
 //
-// linux@peak-system.com
+// linux@peak-system.com 
 // www.peak-system.com
 //
 // This program is free software; you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 //****************************************************************************
 //
 // pcan.h
-// constants and definitions to access the drivers
+// constants and definitions to access the drivers 
 //
 // $Id: pcan.h 615 2010-02-14 22:38:55Z khitschler $
 //
@@ -58,17 +58,17 @@
 #endif
 
 //****************************************************************************
-// parameter wHardwareType, used by open
-#define HW_ISA             1 // not supported with LINUX, 82C200 chip
+// parameter wHardwareType, used by open 
+#define HW_ISA             1 // not supported with LINUX, 82C200 chip 
 #define HW_DONGLE_SJA      5
-#define HW_DONGLE_SJA_EPP  6
+#define HW_DONGLE_SJA_EPP  6 
 #define HW_DONGLE_PRO      7 // not yet supported with LINUX
 #define HW_DONGLE_PRO_EPP  8 // not yet supported with LINUX
 #define HW_ISA_SJA         9 // use this also for PC/104
 #define HW_PCI            10 // PCI carries always SJA1000 chips
 #define HW_USB            11 // don't know if this is common over peak products
 #define HW_PCCARD         12 // not aligned to other OS
-#define HW_USB_PRO        13
+#define HW_USB_PRO        13 
 
 //****************************************************************************
 // mask for standard and extended CAN identifiers
@@ -85,7 +85,7 @@
 #define CAN_ERR_BUSOFF         0x0010  // bus error, 'bus off' state entered
 #define CAN_ERR_QRCVEMPTY      0x0020  // receive queue is empty
 #define CAN_ERR_QOVERRUN       0x0040  // receive queue overrun
-#define CAN_ERR_QXMTFULL       0x0080  // transmit queue full
+#define CAN_ERR_QXMTFULL       0x0080  // transmit queue full 
 #define CAN_ERR_REGTEST        0x0100  // test of controller registers failed
 #define CAN_ERR_NOVXD          0x0200  // Win95/98/ME only
 #define CAN_ERR_RESOURCE       0x2000  // can't create resource
@@ -102,7 +102,7 @@
 
 //****************************************************************************
 // maximum length of the version string (attention: used in driver too)
-#define VERSIONSTRING_LEN     64
+#define VERSIONSTRING_LEN     64  
 
 //****************************************************************************
 // structures to communicate via ioctls
@@ -113,7 +113,7 @@ typedef struct
   BYTE ucListenOnly;     // listen only mode when != 0
 } TPCANInit;             // for PCAN_INIT
 
-typedef struct
+typedef struct 
 {
   DWORD ID;              // 11/29 bit code
   BYTE  MSGTYPE;         // bits of MSGTYPE_*
@@ -128,7 +128,7 @@ typedef struct
   WORD     wUsec;        // remainder in micro-seconds
 } TPCANRdMsg;            // for PCAN_READ_MSG
 
-typedef struct
+typedef struct 
 {
   WORD  wErrorFlag;      // same as in TPDIAG, is cleared in driver after access
   int   nLastError;      // is cleared in driver after access
@@ -148,14 +148,14 @@ typedef struct
   int   nOpenPaths;      // number of open paths for this device
   char  szVersionString[VERSIONSTRING_LEN]; // driver version string
 } TPDIAG;                // for PCAN_DIAG, in opposition to PCAN_GET_STATUS nothing is cleared
-
+  
 typedef struct
 {
   DWORD dwBitRate;       // in + out, bitrate in bits per second
   WORD  wBTR0BTR1;       // out only: the result
 } TPBTR0BTR1;
 
-typedef struct
+typedef struct 
 {
   WORD  wErrorFlag;      // same as in TPDIAG, is cleared in driver after access
   int   nLastError;      // is cleared in driver after access
