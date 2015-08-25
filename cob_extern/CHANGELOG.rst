@@ -2,6 +2,11 @@
 Changelog for package cob_extern
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* migrate to package format v2
+* Contributors: ipa-mig
+
 0.6.1 (2015-05-28)
 ------------------
 
