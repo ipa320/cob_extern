@@ -12,6 +12,6 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
-  <build_depend>dpkg</build_depend>
+  <depend>dpkg</depend>
 
 </package>

@@ -1,13 +1,14 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(libphidgets)
 
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED COMPONENTS mk rospack)
 
 catkin_package(
-    DEPENDS libusb-dev
     INCLUDE_DIRS include
     LIBRARIES phidget21
 )
+
+include_directories(include ${catkin_INCLUDE_DIRS})
 
 add_custom_target(
     build_phidget21 ALL
@@ -40,6 +41,12 @@ add_dependencies(copy_phidget210 build_phidget21)
 add_dependencies(phidget21 copy_phidget21_plain)
 add_dependencies(phidget21 copy_phidget21)
 add_dependencies(phidget21 copy_phidget210)
+
+install(TARGETS phidget21
+    ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+    LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+    RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
+)
 
 install(PROGRAMS lib/libphidget21.so lib/libphidget21.so.0 lib/libphidget21.so.0.0.0
   DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
