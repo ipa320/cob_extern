@@ -1,8 +1,8 @@
 all: installed
 
 TARBALL = build/peak-linux-driver-7.9.tar.gz
-TARBALL_URL = http://www.peak-system.com/fileadmin/media/linux/files/peak-linux-driver-7.9.tar.gz 
-#TARBALL_URL = https://code.ros.org/svn/release/download/thirdparty/peak-linux-driver-7.9.tar.gz 
+TARBALL_URL = http://www.peak-system.com/fileadmin/media/linux/files/peak-linux-driver-7.9.tar.gz
+#TARBALL_URL = https://code.ros.org/svn/release/download/thirdparty/peak-linux-driver-7.9.tar.gz
 SOURCE_DIR = build/peak-linux-driver-7.9
 MD5SUM_FILE = peak-linux-driver-7.9.tar.gz.md5sum
 KERNEL_VER=/usr/src/linux-headers-"`uname -r`"
@@ -17,11 +17,12 @@ installed: $(SOURCE_DIR)/unpacked
 	mkdir -p common
 	mkdir -p common/lib
 	mkdir -p common/include
-	mkdir -p common/include/libpcan	
+	mkdir -p common/include/libpcan
 	cp $(SOURCE_DIR)/lib/*.so* common/lib
 	cp common/lib/libpcan.so common/lib/libpcan.so.0
 	cp $(SOURCE_DIR)/lib/*.h common/include/libpcan
 	cp $(SOURCE_DIR)/driver/*.h common/include/libpcan
+	sed -i '/#include <pcan.h>/c\#include <libpcan/pcan.h>' common/include/libpcan/libpcan.h
 clean:
 	rm -rf common $(SOURCE_DIR) $(TARBALL)
 wipe: clean
