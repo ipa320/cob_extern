@@ -2,8 +2,8 @@
 Changelog for package cob_extern
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.6.2 (2015-08-25)
+------------------
 * migrate to package format v2
 * Contributors: ipa-mig
 
