@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(libphidgets)
 
-find_package(catkin REQUIRED COMPONENTS mk rospack)
+find_package(catkin REQUIRED COMPONENTS mk roslib rospack)
 
 catkin_package(
     INCLUDE_DIRS include

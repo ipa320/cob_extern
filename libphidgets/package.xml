@@ -14,6 +14,7 @@
 
   <depend>libusb-dev</depend>
   <depend>mk</depend>
+  <depend>roslib</depend>
   <depend>rospack</depend>
 
 </package>
