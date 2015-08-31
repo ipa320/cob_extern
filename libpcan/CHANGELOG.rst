@@ -2,6 +2,9 @@
 Changelog for package libpcan
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.6.2 (2015-08-25)
 ------------------
 * catkin_linting and make all build_depends depends only
