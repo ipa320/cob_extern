@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>libntcan</name>
-  <version>0.6.2</version>
+  <version>0.6.3</version>
   <description>This package wraps the libntcan to use it as a ros dependency.</description>
 
   <license>proprietary</license>
