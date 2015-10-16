@@ -1,0 +1,5 @@
+libpcan/build
+libpcan/common/lib
+libphidgets/build/
+libphidgets/lib/
+*~

@@ -1,14 +1,14 @@
-<package>
+<?xml version="1.0"?>
+<package format="2">
   <name>cob_extern</name>
-  <version>0.5.0</version>
+  <version>0.6.3</version>
   <description>The cob_extern stack contains third party libraries needed for operating Care-O-bot. The packages are downloaded from the manufactorers website and not changed in any way.</description>
-  <!-- <maintainer>Maintained by Florian Weisshardt</maintainer> -->
 
   <license>LGPL</license>
   <license>proprietary</license>
 
   <url type="website">http://ros.org/wiki/cob_extern</url>
-  <url type="bugtracker">http://care-o-bot.org/trac</url>
+  <url type="bugtracker">https://github.com/ipa320/cob_extern/issues</url>
 
   <maintainer email="fmw@ipa.fhg.de">Florian Weisshardt</maintainer>
   <maintainer email="nhg@ipa.fhg.de">Nadia Hammoudeh Garcia</maintainer>
@@ -16,14 +16,10 @@
 
 
   <buildtool_depend>catkin</buildtool_depend>
-  <run_depend>libphidgets</run_depend>
-  <run_depend>libntcan</run_depend>
-  <run_depend>libmesasr</run_depend>
-  <run_depend>libpcan</run_depend>
 
-
-
-
+  <exec_depend>libntcan</exec_depend>
+  <exec_depend>libpcan</exec_depend>
+  <exec_depend>libphidgets</exec_depend>
 
   <export>
     <metapackage/>

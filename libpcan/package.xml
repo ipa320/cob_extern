@@ -1,24 +1,22 @@
-<package>
+<?xml version="1.0"?>
+<package format="2">
   <name>libpcan</name>
-  <version>0.5.0</version>
+  <version>0.6.3</version>
   <description>This package wraps the libpcan to use it as a ros dependency</description>
-  <!-- <maintainer>Florian Weisshardt</maintainer> -->
 
   <license>LGPL</license>
 
   <url type="website">http://p103112.typo3server.info/fileadmin/media/linux/index.htm</url>
-  <!-- <url type="bugtracker"></url> -->
 
   <maintainer email="fmw@ipa.fhg.de">Florian Weisshardt</maintainer>
   <author>Florian Weisshardt</author>
 
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>libpopt-dev</build_depend>
-  <build_depend>mk</build_depend>
-  <build_depend>rosbuild</build_depend>
-  <build_depend>linux-headers-generic</build_depend>
 
-  <export>
-    <cpp lflags="-Wl,-rpath,${prefix}/common/lib -L${prefix}/common/lib -lpcan" cflags="-I${prefix}/common/include -I${prefix}/common/include/libpcan"/>
-  </export>
+  <depend>libpopt-dev</depend>
+  <depend>linux-headers-generic</depend>
+  <depend>mk</depend>
+  <depend>roslib</depend>
+  <depend>rospack</depend>
+  
 </package>
