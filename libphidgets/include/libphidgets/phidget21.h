@@ -1,3 +1,6 @@
+#ifndef PHIDGET_H
+#define PHIDGET_H 
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -70,6 +73,7 @@ typedef enum {
  PHIDID_MOTORCONTROL_1MOTOR = 0x03E,
  PHIDID_MOTORCONTROL_HC_2MOTOR = 0x059,
  PHIDID_RFID_2OUTPUT = 0x031,
+ PHIDID_RFID_2OUTPUT_READ_WRITE = 0x034,
  PHIDID_ROTARY_TOUCH = 0x077,
  PHIDID_SPATIAL_ACCEL_3AXIS = 0x07F,
  PHIDID_SPATIAL_ACCEL_GYRO_COMPASS = 0x033,
@@ -108,6 +112,7 @@ typedef enum {
  PHIDUID_ADVANCEDSERVO_8MOTOR_PGOOD_FLAG,
  PHIDUID_ADVANCEDSERVO_8MOTOR_CURSENSE_FIX,
  PHIDUID_ANALOG_4OUTPUT,
+ PHIDUID_BRIDGE_4INPUT_GAINBUG,
  PHIDUID_BRIDGE_4INPUT,
  PHIDUID_ENCODER_1ENCODER_1INPUT_OLD,
  PHIDUID_ENCODER_1ENCODER_1INPUT_v1,
@@ -138,6 +143,7 @@ typedef enum {
  PHIDUID_IR,
  PHIDUID_LED_64,
  PHIDUID_LED_64_ADV,
+ PHIDUID_LED_64_ADV_M3,
  PHIDUID_MOTORCONTROL_1MOTOR,
  PHIDUID_MOTORCONTROL_HC_2MOTOR,
  PHIDUID_MOTORCONTROL_LV_2MOTOR_4INPUT,
@@ -146,7 +152,7 @@ typedef enum {
  PHIDUID_RFID,
  PHIDUID_RFID_2OUTPUT_NO_ECHO,
  PHIDUID_RFID_2OUTPUT,
- PHIDUID_RFID_2OUTPUT_ADVANCED,
+ PHIDUID_RFID_2OUTPUT_READ_WRITE,
  PHIDUID_SERVO_1MOTOR_OLD,
  PHIDUID_SERVO_4MOTOR_OLD,
  PHIDUID_SERVO_1MOTOR_NO_ECHO,
@@ -161,6 +167,7 @@ typedef enum {
  PHIDUID_SPATIAL_ACCEL_GYRO_COMPASS_1042,
  PHIDUID_SPATIAL_ACCEL_GYRO_COMPASS_1044,
  PHIDUID_STEPPER_BIPOLAR_1MOTOR,
+ PHIDUID_STEPPER_BIPOLAR_1MOTOR_M3,
  PHIDUID_STEPPER_UNIPOLAR_4MOTOR,
  PHIDUID_TEMPERATURESENSOR_OLD,
  PHIDUID_TEMPERATURESENSOR,
@@ -370,7 +377,7 @@ typedef struct _CPhidgetEncoder *CPhidgetEncoderHandle;
  int CPhidgetEncoder_getPosition(CPhidgetEncoderHandle phid, int index, int *position);
  int CPhidgetEncoder_setPosition(CPhidgetEncoderHandle phid, int index, int position);
  int CPhidgetEncoder_set_OnPositionChange_Handler(CPhidgetEncoderHandle phid, int ( *fptr)(CPhidgetEncoderHandle phid, void *userPtr, int index, int time,int positionChange), void *userPtr);
- int CPhidgetEncoder_set_OnIndexChange_Handler(CPhidgetEncoderHandle phid, int ( *fptr)(CPhidgetEncoderHandle phid, void *userPtr, int index, int indexPosition), void *userPtr);
+ int CPhidgetEncoder_set_OnIndex_Handler(CPhidgetEncoderHandle phid, int ( *fptr)(CPhidgetEncoderHandle phid, void *userPtr, int index, int indexPosition), void *userPtr);
  int CPhidgetEncoder_getIndexPosition(CPhidgetEncoderHandle phid, int index, int *position);
  int CPhidgetEncoder_getEnabled(CPhidgetEncoderHandle phid, int index, int *enabledState);
  int CPhidgetEncoder_setEnabled(CPhidgetEncoderHandle phid, int index, int enabledState);
@@ -393,27 +400,27 @@ typedef struct _CPhidgetFrequencyCounter *CPhidgetFrequencyCounterHandle;
  int CPhidgetFrequencyCounter_getFilter(CPhidgetFrequencyCounterHandle phid, int index, CPhidgetFrequencyCounter_FilterType *filter);
  int CPhidgetFrequencyCounter_reset(CPhidgetFrequencyCounterHandle phid, int index);
  int CPhidgetFrequencyCounter_set_OnCount_Handler(CPhidgetFrequencyCounterHandle phid, int ( *fptr)(CPhidgetFrequencyCounterHandle phid, void *userPtr, int index, int time,int counts), void *userPtr);
-struct __GPSTime
+typedef struct __GPSTime
 {
  short tm_ms;
  short tm_sec;
  short tm_min;
  short tm_hour;
-} typedef GPSTime;
-struct __GPSDate
+} GPSTime;
+typedef struct __GPSDate
 {
  short tm_mday;
  short tm_mon;
  short tm_year;
-} typedef GPSDate;
-struct __GPSSatInfo
+} GPSDate;
+typedef struct __GPSSatInfo
 {
  short ID;
  short elevation;
  int azimuth;
  short SNR;
-} typedef GPSSatInfo;
-struct __GPGGA
+} GPSSatInfo;
+typedef struct __GPGGA
 {
  GPSTime time;
  double latitude;
@@ -423,8 +430,8 @@ struct __GPGGA
  double horizontalDilution;
  double altitude;
  double heightOfGeoid;
-} typedef GPGGA;
-struct __GPGSA
+} GPGGA;
+typedef struct __GPGSA
 {
  char mode;
  short fixType;
@@ -432,13 +439,13 @@ struct __GPGSA
  double posnDilution;
  double horizDilution;
  double vertDilution;
-} typedef GPGSA;
-struct __GPGSV
+} GPGSA;
+typedef struct __GPGSV
 {
  short satsInView;
  GPSSatInfo satInfo[12];
-} typedef GPGSV;
-struct __GPRMC
+} GPGSV;
+typedef struct __GPRMC
 {
  GPSTime time;
  char status;
@@ -449,23 +456,23 @@ struct __GPRMC
  GPSDate date;
  double magneticVariation;
  char mode;
-} typedef GPRMC;
-struct __GPVTG
+} GPRMC;
+typedef struct __GPVTG
 {
  double trueHeading;
  double magneticHeading;
  double speedKnots;
  double speed;
  char mode;
-} typedef GPVTG;
-struct __NMEAData
+} GPVTG;
+typedef struct __NMEAData
 {
  GPGGA GGA;
  GPGSA GSA;
  GPGSV GSV;
  GPRMC RMC;
  GPVTG VTG;
-} typedef NMEAData;
+} NMEAData;
 typedef struct _CPhidgetGPS *CPhidgetGPSHandle;
  int CPhidgetGPS_create(CPhidgetGPSHandle *phid);
  int CPhidgetGPS_getLatitude(CPhidgetGPSHandle phid, double *latitude);
@@ -555,12 +562,14 @@ typedef enum {
  PHIDGET_LED_VOLTAGE_5_0V
 } CPhidgetLED_Voltage;
  int CPhidgetLED_getLEDCount(CPhidgetLEDHandle phid, int *count);
- int CPhidgetLED_getDiscreteLED(CPhidgetLEDHandle phid, int index, int *brightness);
- int CPhidgetLED_setDiscreteLED(CPhidgetLEDHandle phid, int index, int brightness);
  int CPhidgetLED_getCurrentLimit(CPhidgetLEDHandle phid, CPhidgetLED_CurrentLimit *currentLimit);
  int CPhidgetLED_setCurrentLimit(CPhidgetLEDHandle phid, CPhidgetLED_CurrentLimit currentLimit);
  int CPhidgetLED_getVoltage(CPhidgetLEDHandle phid, CPhidgetLED_Voltage *voltage);
  int CPhidgetLED_setVoltage(CPhidgetLEDHandle phid, CPhidgetLED_Voltage voltage);
+ int CPhidgetLED_getBrightness(CPhidgetLEDHandle phid, int index, double *brightness);
+ int CPhidgetLED_setBrightness(CPhidgetLEDHandle phid, int index, double brightness);
+ int CPhidgetLED_getCurrentLimitIndexed(CPhidgetLEDHandle phid, int index, double *limit);
+ int CPhidgetLED_setCurrentLimitIndexed(CPhidgetLEDHandle phid, int index, double limit);
 typedef struct _CPhidgetMotorControl *CPhidgetMotorControlHandle;
  int CPhidgetMotorControl_create(CPhidgetMotorControlHandle *phid);
  int CPhidgetMotorControl_getMotorCount(CPhidgetMotorControlHandle phid, int *count);
@@ -609,6 +618,11 @@ typedef struct _CPhidgetPHSensor *CPhidgetPHSensorHandle;
  int CPhidgetPHSensor_setTemperature(CPhidgetPHSensorHandle phid, double temperature);
 typedef struct _CPhidgetRFID *CPhidgetRFIDHandle;
  int CPhidgetRFID_create(CPhidgetRFIDHandle *phid);
+typedef enum {
+ PHIDGET_RFID_PROTOCOL_EM4100 = 1,
+ PHIDGET_RFID_PROTOCOL_ISO11785_FDX_B,
+ PHIDGET_RFID_PROTOCOL_PHIDGETS,
+} CPhidgetRFID_Protocol;
  int CPhidgetRFID_getOutputCount(CPhidgetRFIDHandle phid, int *count);
  int CPhidgetRFID_getOutputState(CPhidgetRFIDHandle phid, int index, int *outputState);
  int CPhidgetRFID_setOutputState(CPhidgetRFIDHandle phid, int index, int outputState);
@@ -617,10 +631,11 @@ typedef struct _CPhidgetRFID *CPhidgetRFIDHandle;
  int CPhidgetRFID_setAntennaOn(CPhidgetRFIDHandle phid, int antennaState);
  int CPhidgetRFID_getLEDOn(CPhidgetRFIDHandle phid, int *LEDState);
  int CPhidgetRFID_setLEDOn(CPhidgetRFIDHandle phid, int LEDState);
- int CPhidgetRFID_getLastTag(CPhidgetRFIDHandle phid, unsigned char *tag);
+ int CPhidgetRFID_getLastTag2(CPhidgetRFIDHandle phid, char **tagString, CPhidgetRFID_Protocol *protocol);
  int CPhidgetRFID_getTagStatus(CPhidgetRFIDHandle phid, int *status);
- int CPhidgetRFID_set_OnTag_Handler(CPhidgetRFIDHandle phid, int ( *fptr)(CPhidgetRFIDHandle phid, void *userPtr, unsigned char *tag), void *userPtr);
- int CPhidgetRFID_set_OnTagLost_Handler(CPhidgetRFIDHandle phid, int ( *fptr)(CPhidgetRFIDHandle phid, void *userPtr, unsigned char *tag), void *userPtr);
+ int CPhidgetRFID_write(CPhidgetRFIDHandle phid, char *tagString, CPhidgetRFID_Protocol protocol, int lock);
+ int CPhidgetRFID_set_OnTag2_Handler(CPhidgetRFIDHandle phid, int ( *fptr)(CPhidgetRFIDHandle phid, void *userPtr, char *tagString, CPhidgetRFID_Protocol protocol), void *userPtr);
+ int CPhidgetRFID_set_OnTagLost2_Handler(CPhidgetRFIDHandle phid, int ( *fptr)(CPhidgetRFIDHandle phid, void *userPtr, char *tagString, CPhidgetRFID_Protocol protocol), void *userPtr);
 typedef struct _CPhidgetServo *CPhidgetServoHandle;
  int CPhidgetServo_create(CPhidgetServoHandle *phid);
  int CPhidgetServo_getMotorCount(CPhidgetServoHandle phid, int *count);
@@ -769,6 +784,26 @@ typedef struct _CPhidgetWeightSensor *CPhidgetWeightSensorHandle;
  int CPhidgetWeightSensor_set_OnWeightChange_Handler(CPhidgetWeightSensorHandle phid, int ( *fptr)(CPhidgetWeightSensorHandle phid, void *userPtr, double weight), void *userPtr);
  int CPhidgetWeightSensor_getWeightChangeTrigger(CPhidgetWeightSensorHandle phid, double *trigger);
  int CPhidgetWeightSensor_setWeightChangeTrigger(CPhidgetWeightSensorHandle phid, double trigger);
+/*
+ * This file is part of libphidget21
+ *
+ * Copyright 2006-2015 Phidgets Inc <patrick@phidgets.com>
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, see 
+ * <http://www.gnu.org/licenses/>
+ */
+
 #ifndef CPHIDGET_CONSTANTS
 #define CPHIDGET_CONSTANTS
 
@@ -859,4 +894,5 @@ typedef struct _CPhidgetWeightSensor *CPhidgetWeightSensorHandle;
 
 #ifdef __cplusplus
 }
+#endif
 #endif
