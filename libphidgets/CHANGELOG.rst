@@ -2,8 +2,8 @@
 Changelog for package libphidgets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.6.4 (2016-04-01)
+------------------
 * Update header to 2015 version
 * Fix checksum for phidgets download
 * Remove old checksum
