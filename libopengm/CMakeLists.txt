@@ -18,7 +18,6 @@ catkin_package(
 	INCLUDE_DIRS
 		common/include
 	LIBRARIES
-#		opengm
 	CATKIN_DEPENDS
 	DEPENDS
 )
