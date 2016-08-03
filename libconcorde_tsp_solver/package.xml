@@ -5,9 +5,9 @@
 	<description>Wrapper for the concorde traveling salesman problem solver from http://www.math.uwaterloo.ca/tsp/concorde/downloads/downloads.htm</description>
 
 	<author email="florian.jordan@ipa.fraunhofer.de">Florian Jordan</author>
-	<maintainer email="rmb@ipa.fhg.de">Richard Bormann</maintainer>
+	<maintainer email="richard.bormann@ipa.fraunhofer.de">Richard Bormann</maintainer>
 
-	<license>see original software</license>
+	<license>LGPL</license>
 
 	<buildtool_depend>catkin</buildtool_depend>
 
