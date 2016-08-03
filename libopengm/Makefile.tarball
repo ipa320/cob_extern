@@ -1,0 +1,26 @@
+all: installed
+
+TARBALL = build/opengm-master.zip
+TARBALL_URL = https://github.com/ipa320/thirdparty/raw/master/opengm-master.zip
+#TARBALL_URL = https://github.com/opengm/opengm/archive/master.zip
+SOURCE_DIR = build/opengm
+UNPACK_CMD = unzip -d opengm -q
+MD5SUM_FILE = opengm-master.zip.md5sum
+
+include $(shell rospack find mk)/download_unpack_build.mk
+
+installed: $(SOURCE_DIR)/unpacked
+
+	mkdir -p common
+	mkdir -p common/include	
+
+	cp -r $(SOURCE_DIR)/opengm-master/include/opengm common/include
+
+	touch installed
+	
+clean:
+	rm -rf common $(SOURCE_DIR) $(TARBALL)
+wipe: clean
+	-rm -rf build
+
+
