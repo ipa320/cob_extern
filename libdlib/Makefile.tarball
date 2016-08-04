@@ -1,0 +1,31 @@
+all: installed
+
+VERSION = 18.17
+TARBALL = build/dlib-$(VERSION).tar.bz2
+TARBALL_URL = https://github.com/ipa320/thirdparty/raw/master/dlib-$(VERSION).tar.bz2
+#TARBALL_URL = http://dlib.net/files/dlib-$(VERSION).tar.bz2
+SOURCE_DIR = build/dlib-$(VERSION)
+UNPACK_CMD = tar xjf
+MD5SUM_FILE = dlib-$(VERSION).tar.bz2.md5sum
+
+include $(shell rospack find mk)/download_unpack_build.mk
+
+installed: $(SOURCE_DIR)/unpacked
+
+	mkdir -p common
+	mkdir -p common/lib
+	mkdir -p common/include
+
+	cd $(SOURCE_DIR)/dlib && mkdir -p build
+	cd $(SOURCE_DIR)/dlib/build && cmake .. 
+	cd $(SOURCE_DIR)/dlib/build && cmake --build . --config Release
+	cp -r $(SOURCE_DIR)/dlib/build/libdlib.a common/lib
+	cp -r $(SOURCE_DIR)/dlib common/include
+	touch installed
+	
+clean:
+	rm -rf common $(SOURCE_DIR) $(TARBALL)
+wipe: clean
+	-rm -rf build
+
+
