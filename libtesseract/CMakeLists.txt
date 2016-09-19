@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(libtesseract)
 
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED COMPONENTS
+	libleptonica
+)
 
 message(STATUS "Project source dir: ${PROJECT_SOURCE_DIR}")
 add_custom_target(
