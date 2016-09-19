@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package format="2">
+	<name>libtesseract</name>
+	<version>0.1.0</version>
+	<description>
+		A ROS wrapper for tesseract (http://code.google.com/p/tesseract-ocr/) following the procedure from package tesseract in the ocr stack.
+	</description>
+	<author email="richard.bormann@ipa.fraunhofer.de">Richard Bormann</author>
+	<maintainer email="richard.bormann@ipa.fraunhofer.de">Richard Bormann</maintainer>
+	<license>LGPL, Tesseract has its own license: Apache License, Version 2.0</license>
+
+	<buildtool_depend>catkin</buildtool_depend>
+
+</package>

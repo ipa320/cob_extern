@@ -1,0 +1,25 @@
+--- configure	2012-04-19 19:53:23.000000000 +0200
++++ configure	2012-04-20 08:04:38.209274224 +0200
+@@ -16280,6 +16280,22 @@
+     fi
+   done
+ done
++
++# Check whether --with-extra-includes was given.
++if test "${with_extra_includes+set}" = set; then :
++  withval=$with_extra_includes;  if test -d "$withval" ; then
++            for lept in . leptonica liblept
++            do
++              if test -r "$withval/$lept/allheaders.h" ; then
++                CPPFLAGS="$CPPFLAGS -I$withval/$lept"
++                have_lept=yes
++              fi
++            done
++          else
++            as_fn_error "Cannot stat directory $withval" "$LINENO" 5
++          fi
++fi
++
+ if test "$have_lept" = yes ; then
+   { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+ $as_echo "yes" >&6; }

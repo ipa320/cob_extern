@@ -1,0 +1,30 @@
+all: installed
+
+TARBALL_REVISION = 722
+TARBALL         = build/tesseract-ocr-rev$(TARBALL_REVISION).tar.gz
+TARBALL_URL     = https://github.com/ipa320/thirdparty/raw/master/tesseract-ocr-rev$(TARBALL_REVISION).tar.gz
+MD5SUM_FILE     = tesseract-ocr-rev$(TARBALL_REVISION).tar.gz.md5sum
+UNPACK_CMD      = tar xzf
+SOURCE_DIR      = build/tesseract-ocr-rev$(TARBALL_REVISION)
+TARBALL_LATE_PATCH = ../../tesseract.patch
+
+include $(shell rospack find mk)/download_unpack_build.mk
+
+installed: $(SOURCE_DIR)/unpacked
+
+		cd $(SOURCE_DIR) && ./autogen.sh
+		cd $(SOURCE_DIR) && patch < $(TARBALL_LATE_PATCH)
+		cd $(SOURCE_DIR) && ./configure --prefix=`rospack find libtesseract` --with-extra-includes=`rospack find libleptonica`/include --with-extra-libraries=`rospack find libleptonica`/lib
+		cd $(SOURCE_DIR) && make install
+		touch installed
+
+
+
+clean:
+#		-cd $(SVN_DIR) && make clean
+#		rm -rf tesseract installed patched
+		rm -rf $(SOURCE_DIR) installed patched
+
+wipe: clean
+#		rm -rf $(SVN_DIR)
+		rm -rf build
