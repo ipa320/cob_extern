@@ -3,7 +3,7 @@ all: installed
 TARBALL_VERSION = 1.68
 TARBALL         = build/leptonica-$(TARBALL_VERSION).tar.gz
 #TARBALL_URL     = http://www.leptonica.org/source/leptonica-$(TARBALL_VERSION).tar.gz
-TARBALL_URL     = https://github.com/ipa-rmb/thirdparty/raw/master/leptonica-$(TARBALL_VERSION).tar.gz
+TARBALL_URL     = https://github.com/ipa320/thirdparty/raw/master/leptonica-$(TARBALL_VERSION).tar.gz
 MD5SUM_FILE     = leptonica-$(TARBALL_VERSION).tar.gz.md5sum
 UNPACK_CMD      = tar xzf
 SOURCE_DIR      = build/leptonica-$(TARBALL_VERSION)
