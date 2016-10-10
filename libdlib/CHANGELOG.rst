@@ -2,8 +2,8 @@
 Changelog for package libdlib
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.6.5 (2016-10-10)
+------------------
 * fixed package.xmls
 * added 3 libs: concorde_tsp_solver, dlib, and opengm
 * Contributors: Richard Bormann

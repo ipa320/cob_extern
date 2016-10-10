@@ -2,8 +2,8 @@
 Changelog for package libopengm
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.6.5 (2016-10-10)
+------------------
 * fixed bug in install directives
 * fixed package.xmls
 * added 3 libs: concorde_tsp_solver, dlib, and opengm
