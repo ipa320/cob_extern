@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
 	<name>libconcorde_tsp_solver</name>
-	<version>0.1.0</version>
+	<version>0.6.4</version>
 	<description>Wrapper for the concorde traveling salesman problem solver from http://www.math.uwaterloo.ca/tsp/concorde/downloads/downloads.htm</description>
 
 	<author email="florian.jordan@ipa.fraunhofer.de">Florian Jordan</author>
