@@ -2,6 +2,12 @@
 Changelog for package libdlib
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'indigo_dev' into indigo_release_candidate
+* Update package.xml
+* Contributors: Florian Weisshardt
+
 0.6.5 (2016-10-10)
 ------------------
 * fixed package.xmls
