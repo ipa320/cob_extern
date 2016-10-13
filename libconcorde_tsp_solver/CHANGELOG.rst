@@ -2,8 +2,8 @@
 Changelog for package libconcorde_tsp_solver
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.6.6 (2016-10-13)
+------------------
 * Merge branch 'indigo_dev' into indigo_release_candidate
 * use package format 2
 * Update package.xml

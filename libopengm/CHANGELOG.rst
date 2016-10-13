@@ -2,8 +2,8 @@
 Changelog for package libopengm
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.6.6 (2016-10-13)
+------------------
 * Merge branch 'indigo_dev' into indigo_release_candidate
 * Update package.xml
 * Contributors: Florian Weisshardt
