@@ -25,6 +25,9 @@ Changelog for package libphidgets
 * migrate to package format v2
 * Contributors: ipa-mig
 
+Forthcoming
+-----------
+
 0.6.6 (2016-10-13)
 ------------------
 
