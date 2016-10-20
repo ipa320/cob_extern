@@ -12,12 +12,11 @@ include $(shell rospack find mk)/download_unpack_build.mk
 
 installed: $(SOURCE_DIR)/unpacked
 	# copy to common
-	
 	mkdir -p common/bin
 	#mkdir -p common/include/vl
 	#!!Qsopt is neccessary to solve TSPs with more than 10 nodes!!
 		#you need to have a qsopt.a and a qsopt.h in the source folder and you have to use an absolute path to link it with Concorde
-	cd $(SOURCE_DIR) && ./configure --with-qsopt=$(QSOPT_DIR)/build/Qsopt && make
+	cd $(SOURCE_DIR) && ./configure --with-qsopt=$(QSOPT_DIR) && make
 	cp -r $(SOURCE_DIR)/TSP/concorde common/bin
 	#cp $(SOURCE_DIR)/vl/*.h common/include/vl
 	touch installed
