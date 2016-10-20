@@ -2,8 +2,8 @@
 Changelog for package libopengm
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.6.7 (2016-10-20)
+------------------
 * changed opengm-master.zip to opengm-master.tar.gz
 * changed opengm-master.zip to opengm-master.tar.gz
 * Contributors: ipa-rmb-fj

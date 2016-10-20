@@ -2,8 +2,8 @@
 Changelog for package libconcorde_tsp_solver
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.6.7 (2016-10-20)
+------------------
 * changed libconcorde to use pwd instead of rospack
 * changed libconcorde to use pwd instead of rospack
 * Contributors: ipa-rmb-fj
