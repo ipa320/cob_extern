@@ -1,7 +1,7 @@
 all: installed
 
 TARBALL = build/opengm-master.tar.gz
-TARBALL_URL = https://github.com/ipa-rmb-fj/thirdparty/raw/master/opengm-master.tar.gz
+TARBALL_URL = https://github.com/ipa320/thirdparty/raw/master/opengm-master.tar.gz
 #TARBALL_URL = https://github.com/opengm/opengm/archive/master.zip
 SOURCE_DIR = build/opengm-master
 UNPACK_CMD = tar xzf
