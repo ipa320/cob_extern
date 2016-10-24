@@ -8,6 +8,17 @@ Changelog for package libopengm
 * changed opengm-master.zip to opengm-master.tar.gz
 * Contributors: ipa-rmb-fj
 
+0.6.9 (2016-10-24)
+------------------
+
+0.6.8 (2016-10-24)
+------------------
+* 0.6.7
+* update changelog
+* changed opengm-master.zip to opengm-master.tar.gz
+* changed opengm-master.zip to opengm-master.tar.gz
+* Contributors: ipa-nhg, ipa-rmb-fj
+
 0.6.6 (2016-10-13)
 ------------------
 * Merge branch 'indigo_dev' into indigo_release_candidate
