@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
 	<name>libdlib</name>
-	<version>0.6.6</version>
+	<version>0.6.7</version>
 	<description>
 		This package wraps the external c++ library dlib (http://dlib.net/) in a ROS package, so other packages can use it. It downloads the source code of it and then builds it, corresponding to the web page of it, using cmake. The build library is a static library and will be copied to the created common/lib folder. The necessary header files will be copied to the common/include folder. The include folder needs to exist before building the package, because in the CMakeLists you have to specify where the headers are and if the folder doesn't exist, catkin won't be able to build the package. For further descriptions and tutorials see the Makefile.tarball and http://dlib.net/ .
 	</description>

@@ -2,6 +2,9 @@
 Changelog for package libdlib
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.7 (2016-10-20)
+------------------
+
 0.6.6 (2016-10-13)
 ------------------
 * Merge branch 'indigo_dev' into indigo_release_candidate
