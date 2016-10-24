@@ -28,8 +28,8 @@ Changelog for package libphidgets
 0.6.7 (2016-10-20)
 ------------------
 
-Forthcoming
------------
+0.6.8 (2016-10-24)
+------------------
 * 0.6.7
 * update changelog
 * Contributors: ipa-nhg
