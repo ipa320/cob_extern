@@ -17,7 +17,6 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
-  <exec_depend>libconcorde_tsp_solver</exec_depend>
   <exec_depend>libdlib</exec_depend>
   <exec_depend>libntcan</exec_depend>
   <exec_depend>libopengm</exec_depend>
