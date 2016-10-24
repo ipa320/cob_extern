@@ -21,6 +21,12 @@ Changelog for package libntcan
 0.6.7 (2016-10-20)
 ------------------
 
+Forthcoming
+-----------
+* 0.6.7
+* update changelog
+* Contributors: ipa-nhg
+
 0.6.6 (2016-10-13)
 ------------------
 

@@ -16,6 +16,16 @@ Changelog for package cob_extern
 0.6.7 (2016-10-20)
 ------------------
 
+Forthcoming
+-----------
+* Merge branch 'indigo_dev' into indigo_release_candidate
+  Conflicts:
+  libconcorde_tsp_solver/package.xml
+* remove libconcorde
+* 0.6.7
+* update changelog
+* Contributors: Florian Weisshardt, ipa-nhg
+
 0.6.6 (2016-10-13)
 ------------------
 
