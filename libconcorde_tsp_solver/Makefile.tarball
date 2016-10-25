@@ -6,7 +6,7 @@ TARBALL_URL = https://github.com/ipa320/thirdparty/raw/master/concorde-tsp-solve
 SOURCE_DIR = build/concorde
 UNPACK_CMD = tar xzf
 MD5SUM_FILE = concorde-tsp-solver-20031219.tar.gz.md5sum
-QSOPT_DIR = $(shell rospack find libqsopt)/common/include/libqsopt
+QSOPT_DIR = $(shell locate libqsopt/common/include -Ae)/libqsopt
 
 include $(shell rospack find mk)/download_unpack_build.mk
 
