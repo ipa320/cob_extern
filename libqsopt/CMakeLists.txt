@@ -12,9 +12,11 @@ if(CMAKE_DPKG)
   if(CMAKE_DPKG_ARCH MATCHES "amd64")
     message(STATUS "++++++++++++++++++++++++++ DETECTED 64 bit +++++++++++++++++++++++++++++++++++")
     set(MYARCH "Qsopt_64")
-  else()
+  elseif(CMAKE_DPKG_ARCH MATCHES "i686")
     message(STATUS "++++++++++++++++++++++++++ DETECTED 32 bit +++++++++++++++++++++++++++++++++++")
     set(MYARCH "Qsopt_32")
+  else
+    message(SEND_ERROR "++++++++++++++++++++++++++ UNSUPPORTED ARCHITECTURE DETECTED +++++++++++++++++++++++++++++++++++")
   endif()
 endif()
 
