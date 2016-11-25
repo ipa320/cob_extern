@@ -7,12 +7,20 @@ project(libconcorde_tsp_solver)
 find_package(catkin REQUIRED)
 find_package(libqsopt)
 
+# check if qsopt has been installed
+if(EXISTS ${libqsopt_INCLUDE_DIRS}/NOT_INSTALLED)
+   message(WARNING "+++++++++++ QSOPT NOT INSTALLED, ONLY TSPs WITH UP TO 10 NODES SOLVABLE +++++++++++")
+   set(QSOPT_INSTALLED "false")
+else()
+   set(QSOPT_INSTALLED "true")
+endif()
+
 #test -e ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_SHARE_DESTINATION}/${PROJECT_NAME}/INSTALLED ||
 message(STATUS "Project source dir: ${PROJECT_SOURCE_DIR}")
 message(STATUS "qsopt include dir: ${libqsopt_INCLUDE_DIRS}") # find required absolut path to qsopt and set it as a variable when calling Makefile.tarball s.t. it can access it
 add_custom_target(
     	build_libconcorde_tsp_solver ALL
-    		COMMAND export QSOPT_INC=${libqsopt_INCLUDE_DIRS} && cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball && touch ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_SHARE_DESTINATION}/${PROJECT_NAME}/INSTALLED
+    		COMMAND export QSOPT_INC=${libqsopt_INCLUDE_DIRS} && export QSOPT_INST=${QSOPT_INSTALLED} && cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball && touch ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_SHARE_DESTINATION}/${PROJECT_NAME}/INSTALLED
     )
 
 
