@@ -2,8 +2,9 @@
 <package format="2">
 	<name>libqsopt</name>
 	<version>0.1.0</version>
-	<description>Wrapper for the Qsopt linear programming solver from http://www.math.uwaterloo.ca/~bico/qsopt/index.html</description>
+	<description>Wrapper for the Qsopt linear programming solver</description>
 
+	<url type="website">http://www.math.uwaterloo.ca/~bico/qsopt/index.html</url>
 	<author email="florian.jordan@ipa.fraunhofer.de">Florian Jordan</author>
 	<maintainer email="richard.bormann@ipa.fraunhofer.de">Richard Bormann</maintainer>
 
