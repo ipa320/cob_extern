@@ -26,51 +26,42 @@ endif()
 catkin_package(
    INCLUDE_DIRS
       common/include
-   LIBRARIES Qsopt
+   LIBRARIES
 )
 
 include_directories(
   common/include
+  ${catkin_INCLUDE_DIRS}
 )
 
 if(SUPPORTED MATCHES "true")
-   message(STATUS "Copying ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/qsopt.a to ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/qsopt.a")
+   message(STATUS "Copying ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/qsopt.a to ${PROJECT_SOURCE_DIR}/common/include/libqsopt/qsopt.a")
 
-   # Qsopt expects qsopt.a to be in the same directory as qsopt.h
+   # Qsopt expects qsopt.a to be in the same directory as qsopt.h --> static library, when using in another package one has to provide an absolut path to it
    add_custom_target(
     	   build_qsopt ALL
-	   #COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/qsopt.a ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}
 	   COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/qsopt.a ${PROJECT_SOURCE_DIR}/common/include/libqsopt
 	   COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/qsopt.h ${PROJECT_SOURCE_DIR}/common/include/libqsopt && touch ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_SHARE_DESTINATION}/${PROJECT_NAME}/INSTALLED
-   )
-
-   add_library(Qsopt SHARED)
-   set_target_properties(Qsopt PROPERTIES LINKER_LANGUAGE CXX)
-
-   add_dependencies(Qsopt build_qsopt)
-
-   install(TARGETS Qsopt
-	   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-	   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-	   RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
    )
 
    #############
    ## Install ##
    #############
    ## Mark executables and/or libraries for installation
-   #install(TARGETS opengm
-   #	ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-   #	LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-   #	RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-   #)
+#   install(TARGETS Qsopt
+#   	ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#   	LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#   	RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+#   )
 
-   install(PROGRAMS common/lib/${MYARCH}/qsopt.a
-	   DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-   )
+#   install(PROGRAMS common/lib/${MYARCH}/qsopt.a
+#	   DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+ #  )
 
-   install(DIRECTORY common/include
+
+   install(DIRECTORY common/include/${PROJECT_NAME}/
 	   DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
+	   FILES_MATCHING PATTERN "*.h"
    )
 else()
    # mark as not installed
