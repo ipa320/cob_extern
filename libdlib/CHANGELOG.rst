@@ -2,6 +2,11 @@
 Changelog for package libdlib
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* manually fix changelogs
+* Contributors: ipa-fxm
+
 0.6.9 (2016-10-24)
 ------------------
 

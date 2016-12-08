@@ -2,6 +2,12 @@
 Changelog for package cob_extern
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* update changelog
+* manually fix changelogs
+* Contributors: ipa-fxm
+
 0.6.9 (2016-10-24)
 ------------------
 
