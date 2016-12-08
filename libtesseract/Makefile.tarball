@@ -11,20 +11,12 @@ TARBALL_LATE_PATCH = ../../tesseract.patch
 include $(shell rospack find mk)/download_unpack_build.mk
 
 installed: $(SOURCE_DIR)/unpacked
-
 		cd $(SOURCE_DIR) && ./autogen.sh
 		cd $(SOURCE_DIR) && patch < $(TARBALL_LATE_PATCH)
 		cd $(SOURCE_DIR) && ./configure --prefix=`rospack find libtesseract` --with-extra-includes=`rospack find libleptonica`/include --with-extra-libraries=`rospack find libleptonica`/lib
 		cd $(SOURCE_DIR) && make install
-		touch installed
-
-
 
 clean:
-#		-cd $(SVN_DIR) && make clean
-#		rm -rf tesseract installed patched
-		rm -rf $(SOURCE_DIR) installed patched
-
+		rm -rf bin $(SOURCE_DIR) share $(TARBALL)
 wipe: clean
-#		rm -rf $(SVN_DIR)
 		rm -rf build

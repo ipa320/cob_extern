@@ -1,22 +1,19 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(libleptonica)
 
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED COMPONENTS mk roslib rospack)
 
 message(STATUS "Project source dir: ${PROJECT_SOURCE_DIR}")
 add_custom_target(
-  build_leptonica ALL
-  COMMAND test -e ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_SHARE_DESTINATION}/${PROJECT_NAME}/INSTALLED || (cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball && touch ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_SHARE_DESTINATION}/${PROJECT_NAME}/INSTALLED)
+  build_lept ALL
+  COMMAND cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball
 )
 
-set(libraries "lept")
-foreach(library ${libraries})
-  add_custom_target(
-    copy_${library} ALL
-    COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/lib/lib${library}.so ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}
-      COMMENT "Copying ${PROJECT_SOURCE_DIR}/lib/lib${library}.so to ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}"
-  )
-endforeach()
+add_custom_target(
+  copy_lept ALL
+  COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/lib/liblept.so ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}
+    COMMENT "Copying ${PROJECT_SOURCE_DIR}/lib/liblept.so to ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}"
+)
 
 catkin_package(
   INCLUDE_DIRS
@@ -29,14 +26,11 @@ include_directories(
   include
 )
 
-foreach(library ${libraries})
-  add_library(${library} SHARED)
-  add_dependencies(${library} copy_${library})
-  add_dependencies(copy_${library} build_leptonica)
-  set_target_properties(${library} PROPERTIES LINKER_LANGUAGE CXX)
-endforeach()
-set_target_properties(build_leptonica PROPERTIES LINKER_LANGUAGE CXX)
+add_library(lept SHARED)
+set_target_properties(lept PROPERTIES LINKER_LANGUAGE CXX)
 
+add_dependencies(copy_lept build_lept)
+add_dependencies(lept copy_lept)
 
 #############
 ## Install ##
