@@ -2,6 +2,11 @@
 Changelog for package libopengm
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.10 (2016-12-08)
+-------------------
+* manually fix changelogs
+* Contributors: ipa-fxm
+
 0.6.9 (2016-10-24)
 ------------------
 
