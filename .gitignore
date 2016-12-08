@@ -1,3 +1,10 @@
+libdlib/build
+libdlib/common/include/dlib
+libdlib/common/lib
+libdlib/installed
+libopengm/build
+libopengm/common/include/opengm
+libopengm/installed
 libpcan/build
 libpcan/common/lib
 libphidgets/build/

@@ -2,8 +2,16 @@
 Changelog for package libdlib
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.9 (2016-10-24)
+------------------
+
+0.6.8 (2016-10-24)
+------------------
+
 0.6.7 (2016-10-20)
 ------------------
+* update changelog
+* Contributors: ipa-nhg
 
 0.6.6 (2016-10-13)
 ------------------
@@ -16,6 +24,15 @@ Changelog for package libdlib
 * fixed package.xmls
 * added 3 libs: concorde_tsp_solver, dlib, and opengm
 * Contributors: Richard Bormann
+
+0.6.4 (2016-04-01)
+------------------
+
+0.6.3 (2015-08-31)
+------------------
+
+0.6.2 (2015-08-25)
+------------------
 
 0.6.1 (2015-05-28)
 ------------------
