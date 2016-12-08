@@ -2,6 +2,25 @@
 Changelog for package cob_extern
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.9 (2016-10-24)
+------------------
+
+0.6.8 (2016-10-24)
+------------------
+* remove libconcorde
+* Contributors: Florian Weisshardt, ipa-nhg
+
+0.6.7 (2016-10-20)
+------------------
+
+0.6.6 (2016-10-13)
+------------------
+
+0.6.5 (2016-10-10)
+------------------
+* added 3 libs: concorde_tsp_solver, dlib, and opengm
+* Contributors: ipa-rmb
+
 0.6.4 (2016-04-01)
 ------------------
 
@@ -12,25 +31,6 @@ Changelog for package cob_extern
 ------------------
 * migrate to package format v2
 * Contributors: ipa-mig
-
-0.6.7 (2016-10-20)
-------------------
-
-0.6.9 (2016-10-24)
-------------------
-
-0.6.8 (2016-10-24)
-------------------
-* Merge branch 'indigo_dev' into indigo_release_candidate
-  Conflicts:
-  libconcorde_tsp_solver/package.xml
-* remove libconcorde
-* 0.6.7
-* update changelog
-* Contributors: Florian Weisshardt, ipa-nhg
-
-0.6.6 (2016-10-13)
-------------------
 
 0.6.1 (2015-05-28)
 ------------------
