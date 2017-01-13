@@ -1,6 +1,3 @@
-#ifndef __LIBPCAN_H__
-#define __LIBPCAN_H__
-
 //****************************************************************************
 // Copyright (C) 2001-2007  PEAK System-Technik GmbH
 //
@@ -31,22 +28,22 @@
 // common header to access the functions within pcanlib.so.x.x,
 // originally created from Wilhelm Hoppe in pcan_pci.h
 //
-// $Id: libpcan.h 455 2007-02-11 22:19:11Z khitschler $
+// $Id: libpcan.h 915 2015-09-04 15:01:26Z stephane $
 //
 //****************************************************************************
 
-//****************************************************************************
-// INCLUDES
+#ifndef __LIBPCAN_H__
+#define __LIBPCAN_H__
+
 #include <libpcan/pcan.h>
 
-//****************************************************************************
-// compatibilty defines
+/* compatibilty defines */
 #if defined(LPSTR) || defined(HANDLE)
 #error "double define for LPSTR, HANDLE found"
 #endif
 
-#define LPSTR  char *
-#define HANDLE void *
+#define LPSTR		char *
+#define HANDLE		void *
 
 //****************************************************************************
 // for CAN_Open(...)
@@ -67,8 +64,8 @@
 #define CAN_BAUD_5K     0x7F7F  //   5 kBit/s
 
 // parameter nCANMsgType
-#define CAN_INIT_TYPE_EX		0x01	//Extended Frame
 #define CAN_INIT_TYPE_ST		0x00	//Standart Frame
+#define CAN_INIT_TYPE_EX		0x02	//Extended Frame
 
 //****************************************************************************
 // error codes are defined in pcan.h
