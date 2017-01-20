@@ -12,13 +12,14 @@ include $(shell rospack find mk)/download_unpack_build.mk
 
 installed: $(SOURCE_DIR)/unpacked
 
-	mkdir -p common/include
+	mkdir -p common/lib
 
 	cd $(SOURCE_DIR)/dlib && mkdir -p build
 	cd $(SOURCE_DIR)/dlib/build && cmake .. 
 	cd $(SOURCE_DIR)/dlib/build && cmake --build . --config Release
 	cp -r $(SOURCE_DIR)/dlib common/include
 	mv common/include/dlib common/include/libdlib
+	cp $(SOURCE_DIR)/dlib/build/libdlib.a common/lib/libdlib.a
 	touch installed
 	
 clean:

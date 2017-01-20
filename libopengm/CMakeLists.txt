@@ -12,7 +12,6 @@ add_custom_target(
     	build_opengm ALL
     		COMMAND  cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball && touch ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_SHARE_DESTINATION}/${PROJECT_NAME}/INSTALLED 
     )
-message(STATUS "Done Tarball")
 
 catkin_package(
 	INCLUDE_DIRS
@@ -30,13 +29,7 @@ include_directories(
 #############
 ## Install ##
 #############
-## Mark executables and/or libraries for installation
-#install(TARGETS opengm
-#	ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#	LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#	RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-#)
-
+# header-only library, so only install header files
 install(DIRECTORY common/include
 	DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
 )

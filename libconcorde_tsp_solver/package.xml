@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
 	<name>libconcorde_tsp_solver</name>
-	<version>0.1.0</version>
+	<version>0.6.10</version>
 	<description>Wrapper for the concorde traveling salesman problem solver</description>
 	
 	<url type="website">http://www.math.uwaterloo.ca/tsp/concorde/downloads/downloads.htm</url>

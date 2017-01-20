@@ -27,6 +27,9 @@ catkin_package(
    INCLUDE_DIRS
       common/include
    LIBRARIES
+      Qsopt
+   CATKIN_DEPENDS
+   DEPENDS
 )
 
 include_directories(
@@ -37,26 +40,30 @@ include_directories(
 if(SUPPORTED MATCHES "true")
    message(STATUS "Copying ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/qsopt.a to ${PROJECT_SOURCE_DIR}/common/include/libqsopt/qsopt.a")
 
-   # Qsopt expects qsopt.a to be in the same directory as qsopt.h --> static library, when using in another package one has to provide an absolut path to it
+   # Concorde expects qsopt.a to be in the same directory as qsopt.h --> static library, when using in another package one has to provide an absolut path to it
    add_custom_target(
     	   build_qsopt ALL
 	   COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/qsopt.a ${PROJECT_SOURCE_DIR}/common/include/libqsopt
 	   COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/qsopt.h ${PROJECT_SOURCE_DIR}/common/include/libqsopt && touch ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_SHARE_DESTINATION}/${PROJECT_NAME}/INSTALLED
+	   COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/qsopt.a ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}
    )
+
+   add_library(Qsopt SHARED)
+   set_target_properties(Qsopt PROPERTIES LINKER_LANGUAGE CXX)
 
    #############
    ## Install ##
    #############
    ## Mark executables and/or libraries for installation
-#   install(TARGETS Qsopt
-#   	ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#   	LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#   	RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-#   )
+   install(TARGETS Qsopt
+   	ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   	LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   	RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+   )
 
-#   install(PROGRAMS common/lib/${MYARCH}/qsopt.a
-#	   DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
- #  )
+   install(PROGRAMS common/lib/${MYARCH}/qsopt.a
+	   DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+          )
 
 
    install(DIRECTORY common/include/${PROJECT_NAME}/
