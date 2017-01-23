@@ -11,7 +11,7 @@ message(STATUS "Project source dir: ${PROJECT_SOURCE_DIR}")
 add_custom_target(
     	build_dlib187 ALL
     		COMMAND  cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball
-		 COMMAND cmake -E copy ${PROJECT_SOURCE_DIR}/common/lib/libdlib.a  ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/
+		COMMAND cmake -E copy ${PROJECT_SOURCE_DIR}/common/lib/libdlib.a  ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/
     )
 
 catkin_package(
@@ -36,10 +36,16 @@ set_target_properties(build_dlib187 PROPERTIES LINKER_LANGUAGE CXX)
 #############
 ## Install ##
 #############
-install(PROGRAMS common/lib/libdlib.a
-  DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+install(TARGETS Dlib
+	ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+	LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+	RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
 )
 
-install(DIRECTORY common/include/${PROJECT_NAME}/
-	DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
+install(PROGRAMS common/lib/libdlib.a
+	DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+)
+
+install(DIRECTORY common/include
+	DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 )
