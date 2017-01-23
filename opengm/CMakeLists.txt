@@ -29,6 +29,6 @@ include_directories(
 ## Install ##
 #############
 # header-only library, so only install header files
-install(DIRECTORY common/include/${PROJECT_NAME}
+install(DIRECTORY common/include/${PROJECT_NAME}/
 	DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 )
