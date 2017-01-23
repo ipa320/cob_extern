@@ -67,6 +67,6 @@ install(PROGRAMS common/lib/concorde.a
 	DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 )
 
-install(DIRECTORY common/include
+install(DIRECTORY common/include/${PROJECT_NAME}/
 	DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 )
