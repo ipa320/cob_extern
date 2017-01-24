@@ -17,11 +17,13 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
+  <exec_depend>liconcorde_tsp_solver</exec_depend>
   <exec_depend>libdlib</exec_depend>
   <exec_depend>libntcan</exec_depend>
-  <exec_depend>libopengm</exec_depend>
   <exec_depend>libpcan</exec_depend>
   <exec_depend>libphidgets</exec_depend>
+  <exec_depend>libqsopt</exec_depend>
+  <exec_depend>opengm</exec_depend>
 
   <export>
     <metapackage/>

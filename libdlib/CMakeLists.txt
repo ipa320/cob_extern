@@ -18,7 +18,7 @@ catkin_package(
 	INCLUDE_DIRS
 		common/include
 	LIBRARIES
-		Dlib
+		dlib
 	CATKIN_DEPENDS
 	DEPENDS
 )
@@ -27,16 +27,16 @@ include_directories(
 	common/include
 )
 
-add_library(Dlib SHARED)
-add_dependencies(Dlib build_dlib187)
-set_target_properties(Dlib PROPERTIES LINKER_LANGUAGE CXX)
+add_library(dlib SHARED)
+add_dependencies(dlib build_dlib187)
+set_target_properties(dlib PROPERTIES LINKER_LANGUAGE CXX)
 set_target_properties(build_dlib187 PROPERTIES LINKER_LANGUAGE CXX)
 
 
 #############
 ## Install ##
 #############
-install(TARGETS Dlib
+install(TARGETS dlib
 	ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 	LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 	RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
