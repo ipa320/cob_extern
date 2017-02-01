@@ -36,8 +36,9 @@ add_custom_target(
 
 add_custom_target(
 	copy_concorde_tsp_solver ALL
-	COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/common/bin/concorde ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/${PROJECT_NAME}
-	COMMENT "Copying ${PROJECT_SOURCE_DIR}/common/bin/concorde to ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/${PROJECT_NAME}"
+	COMMAND ${CMAKE_COMMAND} -E make_directory ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_BIN_DESTINATION}/
+	COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/common/bin/concorde ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_BIN_DESTINATION}/
+	COMMENT "Copying ${PROJECT_SOURCE_DIR}/common/bin/concorde to ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_BIN_DESTINATION}/"
 )
 
 include_directories(
@@ -64,7 +65,7 @@ install(TARGETS concorde
 )
 
 install(PROGRAMS common/bin/concorde
-	DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/common/bin
+	DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
 install(PROGRAMS common/lib/concorde.a
