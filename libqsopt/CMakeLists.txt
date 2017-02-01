@@ -33,43 +33,43 @@ catkin_package(
 )
 
 include_directories(
-  common/include
-  ${catkin_INCLUDE_DIRS}
+	common/include
+	${catkin_INCLUDE_DIRS}
 )
 
 if(SUPPORTED MATCHES "true")
-   message(STATUS "Copying ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/qsopt.a to ${PROJECT_SOURCE_DIR}/common/include/libqsopt/qsopt.a")
+	message(STATUS "Copying ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/qsopt.a to ${PROJECT_SOURCE_DIR}/common/include/libqsopt/qsopt.a")
 
-   # Concorde expects qsopt.a to be in the same directory as qsopt.h --> static library, when using in another package one has to provide an absolut path to it
-   add_custom_target(
-    	   build_qsopt ALL
-	   COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/qsopt.a ${PROJECT_SOURCE_DIR}/common/include/libqsopt
-	   COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/qsopt.h ${PROJECT_SOURCE_DIR}/common/include/libqsopt && touch ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_SHARE_DESTINATION}/${PROJECT_NAME}/INSTALLED
-	   COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/qsopt.a ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}
+	# Concorde expects qsopt.a to be in the same directory as qsopt.h --> static library, when using in another package one has to provide an absolut path to it
+	add_custom_target(
+		build_qsopt ALL
+			COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/qsopt.a ${PROJECT_SOURCE_DIR}/common/include/libqsopt
+			COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/qsopt.h ${PROJECT_SOURCE_DIR}/common/include/libqsopt && touch ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_SHARE_DESTINATION}/${PROJECT_NAME}/INSTALLED
+			COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/common/lib/${MYARCH}/qsopt.a ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}
    )
 
-   add_library(Qsopt SHARED)
-   set_target_properties(Qsopt PROPERTIES LINKER_LANGUAGE CXX)
+	add_library(Qsopt SHARED)
+	set_target_properties(Qsopt PROPERTIES LINKER_LANGUAGE CXX)
 
-   #############
-   ## Install ##
-   #############
-   ## Mark executables and/or libraries for installation
-   install(TARGETS Qsopt
-   	ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-   	LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-   	RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
-   )
+	#############
+	## Install ##
+	#############
+	## Mark executables and/or libraries for installation
+	install(TARGETS Qsopt
+		ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+		LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+		RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
+	)
 
-   install(PROGRAMS common/lib/${MYARCH}/qsopt.a
-	   DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-   )
+	install(PROGRAMS common/lib/${MYARCH}/qsopt.a
+		DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+	)
 
 
-   install(DIRECTORY common/include/${PROJECT_NAME}/
-	   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-   )
+	install(DIRECTORY common/include/${PROJECT_NAME}/
+		DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+	)
 else()
-   # mark as not installed
-   file(WRITE common/include/NOT_INSTALLED "")
+	# mark as not installed
+	file(WRITE common/include/NOT_INSTALLED "")
 endif()

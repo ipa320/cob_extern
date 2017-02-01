@@ -9,8 +9,8 @@ find_package(catkin REQUIRED)
 message(STATUS "Project source dir: ${PROJECT_SOURCE_DIR}")
 add_custom_target(
     	build_opengm ALL
-    		COMMAND  cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball 
-    )
+		COMMAND  cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball 
+)
 
 catkin_package(
 	INCLUDE_DIRS

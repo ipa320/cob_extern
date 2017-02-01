@@ -18,27 +18,27 @@ catkin_package(
 
 # check if qsopt has been installed
 if(EXISTS ${libqsopt_INCLUDE_DIRS}/NOT_INSTALLED)
-   message(WARNING "+++++++++++ QSOPT NOT INSTALLED, ONLY TSPs WITH UP TO 10 NODES SOLVABLE +++++++++++")
-   set(QSOPT_INSTALLED "false")
+	message(WARNING "+++++++++++ QSOPT NOT INSTALLED, ONLY TSPs WITH UP TO 10 NODES SOLVABLE +++++++++++")
+	set(QSOPT_INSTALLED "false")
 else()
-   set(QSOPT_INSTALLED "true")
+	set(QSOPT_INSTALLED "true")
 endif()
 
 message(STATUS "Project source dir: ${PROJECT_SOURCE_DIR}")
 message(STATUS "qsopt include dir: ${libqsopt_INCLUDE_DIRS}") # find required absolut path to qsopt and set it as a variable when calling Makefile.tarball s.t. it can access it
 add_custom_target(
-    	build_libconcorde_tsp_solver ALL
-    		COMMAND export QSOPT_INC=${libqsopt_INCLUDE_DIRS} && export QSOPT_INST=${QSOPT_INSTALLED} && cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball
+	build_libconcorde_tsp_solver ALL
+		COMMAND export QSOPT_INC=${libqsopt_INCLUDE_DIRS} && export QSOPT_INST=${QSOPT_INSTALLED} && cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball
 		COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/common/lib/concorde.a  ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/concorde.a
-    )
+)
 
 
 
 add_custom_target(
 	copy_concorde_tsp_solver ALL
-	COMMAND ${CMAKE_COMMAND} -E make_directory ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_BIN_DESTINATION}/
-	COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/common/bin/concorde ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_BIN_DESTINATION}/
-	COMMENT "Copying ${PROJECT_SOURCE_DIR}/common/bin/concorde to ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_BIN_DESTINATION}/"
+		COMMAND ${CMAKE_COMMAND} -E make_directory ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_BIN_DESTINATION}/
+		COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/common/bin/concorde ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_BIN_DESTINATION}/
+		COMMENT "Copying ${PROJECT_SOURCE_DIR}/common/bin/concorde to ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_BIN_DESTINATION}/"
 )
 
 include_directories(
