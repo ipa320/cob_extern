@@ -2,7 +2,7 @@
 <package format="2">
 	<name>libqsopt</name>
 	<version>0.6.10</version>
-	<description>Wrapper for the Qsopt linear programming solver</description>
+	<description>Wrapper for the Qsopt linear programming solver, all rights on Qsopt go to the authors David Applegate, William Cook, Sanjeeb Dash, and Monika Mevenkamp.</description>
 
 	<url type="website">http://www.math.uwaterloo.ca/~bico/qsopt/index.html</url>
 	<author email="florian.jordan@ipa.fraunhofer.de">Florian Jordan</author>
