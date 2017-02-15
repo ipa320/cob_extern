@@ -1,4 +1,4 @@
-SOURCE_DIR=build/peak-linux-driver-7.9
+SOURCE_DIR=build/peak-linux-driver-7.15.2
 KERNEL_VER=/usr/src/linux-headers-"`uname -r`"
 
 # apply patch for current Linux kernel versions
