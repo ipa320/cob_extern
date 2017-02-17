@@ -1,10 +1,10 @@
 all: installed
 
-TARBALL = build/peak-linux-driver-7.9.tar.gz
-TARBALL_URL = http://www.peak-system.com/fileadmin/media/linux/files/peak-linux-driver-7.9.tar.gz
-#TARBALL_URL = https://code.ros.org/svn/release/download/thirdparty/peak-linux-driver-7.9.tar.gz
-SOURCE_DIR = build/peak-linux-driver-7.9
-MD5SUM_FILE = peak-linux-driver-7.9.tar.gz.md5sum
+TARBALL = build/peak-linux-driver-8.3.tar.gz
+TARBALL_URL = http://www.peak-system.com/fileadmin/media/linux/files/peak-linux-driver-8.3.tar.gz
+#TARBALL_URL = https://code.ros.org/svn/release/download/thirdparty/peak-linux-driver-8.3.tar.gz
+SOURCE_DIR = build/peak-linux-driver-8.3
+MD5SUM_FILE = peak-linux-driver-8.3.tar.gz.md5sum
 KERNEL_VER=/usr/src/linux-headers-"`uname -r`"
 
 include $(shell rospack find mk)/download_unpack_build.mk
