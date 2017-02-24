@@ -6,18 +6,21 @@ TARBALL_URL = https://github.com/ipa320/thirdparty/raw/master/concorde-tsp-solve
 SOURCE_DIR = build/concorde
 UNPACK_CMD = tar xzf
 MD5SUM_FILE = concorde-tsp-solver-20031219.tar.gz.md5sum
+QSOPT_DIR = $(shell echo $(QSOPT_INC))/libqsopt
 
 include $(shell rospack find mk)/download_unpack_build.mk
 
 installed: $(SOURCE_DIR)/unpacked
 	# copy to common
 	mkdir -p common/bin
-	#mkdir -p common/include/vl
+	mkdir -p common/lib
 	#!!Qsopt is neccessary to solve TSPs with more than 10 nodes!!
 		#you need to have a qsopt.a and a qsopt.h in the source folder and you have to use an absolute path to link it with Concorde
-	cd $(SOURCE_DIR) && ./configure --with-qsopt=$(shell rospack find libconcorde_tsp_solver)/build/Qsopt && make
+	# use the provided bash script configure and build the concorde solver according to if Qsopt is installed or not
+	./build.sh $(SOURCE_DIR) $(QSOPT_DIR)
 	cp -r $(SOURCE_DIR)/TSP/concorde common/bin
-	#cp $(SOURCE_DIR)/vl/*.h common/include/vl
+	cp -r $(SOURCE_DIR)/concorde.a common/lib
+	cp -r $(SOURCE_DIR)/concorde.h common/include/libconcorde_tsp_solver/concorde.h
 	touch installed
 	
 clean:

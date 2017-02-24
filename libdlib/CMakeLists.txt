@@ -10,18 +10,9 @@ find_package(catkin REQUIRED)
 message(STATUS "Project source dir: ${PROJECT_SOURCE_DIR}")
 add_custom_target(
     	build_dlib187 ALL
-    		COMMAND  cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball && touch ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_SHARE_DESTINATION}/${PROJECT_NAME}/INSTALLED 
+    		COMMAND  cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball
+		COMMAND cmake -E copy ${PROJECT_SOURCE_DIR}/common/lib/libdlib.a  ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/
     )
-message(STATUS "done tarball")
-
-set(libraries "dlib")
-foreach(library ${libraries})
-	add_custom_target(
-		copy_${library} ALL
-		COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/build/dlib-18.17/dlib/build/lib${library}.a ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}
-    	COMMENT "Copying ${PROJECT_SOURCE_DIR}/common/build/lib${library}.a to ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}"
-	)
-endforeach()
 
 catkin_package(
 	INCLUDE_DIRS
@@ -36,25 +27,25 @@ include_directories(
 	common/include
 )
 
-foreach(library ${libraries})
-	add_library(${library} SHARED)
-	add_dependencies(${library} copy_${library})
-	add_dependencies(copy_${library} build_dlib187)
-	set_target_properties(${library} PROPERTIES LINKER_LANGUAGE CXX)
-endforeach()
+add_library(dlib SHARED)
+add_dependencies(dlib build_dlib187)
+set_target_properties(dlib PROPERTIES LINKER_LANGUAGE CXX)
 set_target_properties(build_dlib187 PROPERTIES LINKER_LANGUAGE CXX)
 
 
 #############
 ## Install ##
 #############
-## Mark executables and/or libraries for installation
 install(TARGETS dlib
 	ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 	LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-	RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+	RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
 )
 
-install(DIRECTORY common/include
-	DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
+install(PROGRAMS common/lib/libdlib.a
+	DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+)
+
+install(DIRECTORY common/include/${PROJECT_NAME}/
+	DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 )

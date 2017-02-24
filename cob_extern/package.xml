@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>cob_extern</name>
-  <version>0.6.4</version>
+  <version>0.6.10</version>
   <description>The cob_extern stack contains third party libraries needed for operating Care-O-bot. The packages are downloaded from the manufactorers website and not changed in any way.</description>
 
   <license>LGPL</license>
@@ -20,9 +20,10 @@
   <exec_depend>libconcorde_tsp_solver</exec_depend>
   <exec_depend>libdlib</exec_depend>
   <exec_depend>libntcan</exec_depend>
-  <exec_depend>libopengm</exec_depend>
   <exec_depend>libpcan</exec_depend>
   <exec_depend>libphidgets</exec_depend>
+  <exec_depend>libqsopt</exec_depend>
+  <exec_depend>opengm</exec_depend>
 
   <export>
     <metapackage/>
