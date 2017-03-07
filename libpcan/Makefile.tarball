@@ -5,13 +5,12 @@ TARBALL_URL = http://www.peak-system.com/fileadmin/media/linux/files/peak-linux-
 #TARBALL_URL = https://code.ros.org/svn/release/download/thirdparty/peak-linux-driver-8.3.tar.gz
 SOURCE_DIR = build/peak-linux-driver-8.3
 MD5SUM_FILE = peak-linux-driver-8.3.tar.gz.md5sum
-KERNEL_VER=/usr/src/linux-headers-"`uname -r`"
 
 include $(shell rospack find mk)/download_unpack_build.mk
 
 installed: $(SOURCE_DIR)/unpacked
 	# build
-	cd $(SOURCE_DIR) && make KERNEL_LOCATION=$(KERNEL_VER) DBG=NO_DEBUG MOD=MODVERSIONS PAR=PARPORT_SUBSYSTEM USB=USB_SUPPORT PCI=PCI_SUPPORT DNG=DONGLE_SUPPORT ISA=NO_ISA_SUPPORT PCC=NO_PCCARD_SUPPORT NET=NO_NETDEV_SUPPORT RT=NO_RT
+	cd $(SOURCE_DIR) && make -C lib
 
 	# copy to common
 	mkdir -p common
