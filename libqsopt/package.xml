@@ -14,8 +14,6 @@ The library doesn't explicitly provide a license, but allows the free use for re
 
 	<buildtool_depend>catkin</buildtool_depend>
 
-	<depend>mk</depend>
-	<depend>roslib</depend>
-	<depend>rospack</depend>
+	<depend>dpkg</depend>
 
 </package>
