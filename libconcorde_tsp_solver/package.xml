@@ -15,8 +15,5 @@ The library doesn't give a specific license, but is provided free for academic r
 	<buildtool_depend>catkin</buildtool_depend>
 
 	<depend>libqsopt</depend>
-	<depend>mk</depend>
-	<depend>roslib</depend>
-	<depend>rospack</depend>
 
 </package>
