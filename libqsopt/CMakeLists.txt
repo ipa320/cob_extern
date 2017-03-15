@@ -22,19 +22,11 @@ endif()
 
 
 if(SUPPORTED MATCHES "true")
-  include_directories(
-    common/include
-    ${catkin_INCLUDE_DIRS}
-  )
-
   catkin_package(
     CFG_EXTRAS libqsopt-extras.cmake # catkin_package does not support artifacts in devel space
   )
 
-  include_directories(common/include)
-  link_directories(common/lib/${MYARCH})
-
-  install(PROGRAMS common/lib/${MYARCH}/qsopt.a
+  install(FILES common/lib/${MYARCH}/qsopt.a
     DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   )
 
