@@ -20,9 +20,9 @@ ExternalProject_Add(EP_${PROJECT_NAME}
 
 catkin_package(
     CFG_EXTRAS opengm-extras.cmake # catkin_package does not support artifacts in devel space
-    DEPENDS EP_${PROJECT_NAME}
+    EXPORTED_TARGETS EP_${PROJECT_NAME}
 )
 
 install(DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION}/
-        DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+    DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 )
