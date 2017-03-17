@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>leptonica</name>
+  <version>0.6.10</version>
+  <description>
+    ROS wrapper for leptonica (http://www.leptonica.org/).
+  </description>
+  <author email="richard.bormann@ipa.fraunhofer.de">Richard Bormann</author>
+  <maintainer email="richard.bormann@ipa.fraunhofer.de">Richard Bormann</maintainer>
+  <license>LGPL, Leptonica has its own license: BSD 2-clause</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+</package>

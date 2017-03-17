@@ -1,34 +1,28 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(opengm)
 
-## Find catkin macros and libraries 
-## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
-## is used, also find other catkin packages
 find_package(catkin REQUIRED)
 
-message(STATUS "Project source dir: ${PROJECT_SOURCE_DIR}")
-add_custom_target(
-    	build_opengm ALL
-		COMMAND  cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball 
+catkin_destinations() # set-up destination variables
+file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION})
+
+include(ExternalProject)
+ExternalProject_Add(EP_${PROJECT_NAME}
+    URL https://github.com/ipa320/thirdparty/raw/master/opengm-master.tar.gz
+    URL_MD5 414951b2772f4ed5683a6cf6bdd6eb0d
+
+    SOURCE_DIR ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src
+    BUILD_COMMAND ""
+        # copy headers to devel space (catkin does not like headers in source space)
+        COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src/include/opengm ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+    INSTALL_COMMAND ""
 )
 
 catkin_package(
-	INCLUDE_DIRS
-		common/include
-	LIBRARIES
-	CATKIN_DEPENDS
-	DEPENDS
+    CFG_EXTRAS opengm-extras.cmake # catkin_package does not support artifacts in devel space
+    EXPORTED_TARGETS EP_${PROJECT_NAME}
 )
 
-include_directories(
-	common/include
-)
-
-
-#############
-## Install ##
-#############
-# header-only library, so only install header files
-install(DIRECTORY common/include/${PROJECT_NAME}/
-	DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+install(DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION}/
+    DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 )

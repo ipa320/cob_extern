@@ -1,51 +1,40 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(libdlib)
 
-## Find catkin macros and libraries 
-## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
-## is used, also find other catkin packages
 find_package(catkin REQUIRED)
 
-#test -e ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_SHARE_DESTINATION}/${PROJECT_NAME}/INSTALLED ||
-message(STATUS "Project source dir: ${PROJECT_SOURCE_DIR}")
-add_custom_target(
-    	build_dlib187 ALL
-    		COMMAND  cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball
-		COMMAND cmake -E copy ${PROJECT_SOURCE_DIR}/common/lib/libdlib.a  ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/
-    )
+catkin_destinations() # set-up destination variables
+file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION})
+
+set(VERSION 18.17)
+
+include(ExternalProject)
+ExternalProject_Add(EP_${PROJECT_NAME}
+    URL https://github.com/ipa320/thirdparty/raw/master/dlib-${VERSION}.tar.bz2
+    URL_MD5 249164604423590c3f1682ab1af66ca0
+
+    SOURCE_DIR ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src
+    BINARY_DIR ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-build
+    
+    CONFIGURE_COMMAND ${CMAKE_COMMAND} ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src/dlib
+    BUILD_COMMAND ${CMAKE_COMMAND} --build . --config Release
+        # copy headers to devel space (catkin does not like headers in source space)
+        COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src/dlib ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+        # copy libs, set-up soname chain
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-build/libdlib.a ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}
+    INSTALL_COMMAND ""
+)
 
 catkin_package(
-	INCLUDE_DIRS
-		common/include
-	LIBRARIES
-		dlib
-	CATKIN_DEPENDS
-	DEPENDS
+    CFG_EXTRAS libdlib-extras.cmake # catkin_package does not support artifacts in devel space
+    EXPORTED_TARGETS EP_${PROJECT_NAME}
 )
 
-include_directories(
-	common/include
+install(DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION}/
+    DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+    FILES_MATCHING PATTERN "*.h"
 )
 
-add_library(dlib SHARED)
-add_dependencies(dlib build_dlib187)
-set_target_properties(dlib PROPERTIES LINKER_LANGUAGE CXX)
-set_target_properties(build_dlib187 PROPERTIES LINKER_LANGUAGE CXX)
-
-
-#############
-## Install ##
-#############
-install(TARGETS dlib
-	ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-	LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-	RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
-)
-
-install(PROGRAMS common/lib/libdlib.a
-	DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-)
-
-install(DIRECTORY common/include/${PROJECT_NAME}/
-	DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+install(FILES ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/libdlib.a
+    DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 )
