@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(libleptonica)
+project(leptonica)
 
 find_package(catkin REQUIRED COMPONENTS)
 
@@ -16,7 +16,7 @@ ExternalProject_Add(EP_${PROJECT_NAME}
     BUILD_IN_SOURCE 1
     BUILD_COMMAND make
         # copy headers to devel space (catkin does not like headers in source space)
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src/src ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION}
         # copy libs, set-up soname chain
         COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src/src/.libs/liblept.so.2.0.0 ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}
         COMMAND ${CMAKE_COMMAND} -E create_symlink liblept.so.2.0.0 ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/liblept.so

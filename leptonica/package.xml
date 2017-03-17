@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>libleptonica</name>
+  <name>leptonica</name>
   <version>0.6.10</version>
   <description>
     ROS wrapper for leptonica (http://www.leptonica.org/).
