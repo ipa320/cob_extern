@@ -1,46 +1,41 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(libleptonica)
 
-find_package(catkin REQUIRED COMPONENTS mk roslib rospack)
+find_package(catkin REQUIRED COMPONENTS)
 
-message(STATUS "Project source dir: ${PROJECT_SOURCE_DIR}")
-add_custom_target(
-  build_lept ALL
-  COMMAND cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball
-)
+catkin_destinations() # set-up destination variables
+file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION})
 
-add_custom_target(
-  copy_lept ALL
-  COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/lib/liblept.so ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}
-    COMMENT "Copying ${PROJECT_SOURCE_DIR}/lib/liblept.so to ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}"
+include(ExternalProject)
+ExternalProject_Add(EP_${PROJECT_NAME}
+    URL https://github.com/ipa320/thirdparty/raw/master/leptonica-1.68.tar.gz
+    URL_MD5 5cd7092f9ff2ca7e3f3e73bfcd556403
+
+    CONFIGURE_COMMAND "./configure"
+    SOURCE_DIR ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src
+    BUILD_IN_SOURCE 1
+    BUILD_COMMAND make
+        # copy headers to devel space (catkin does not like headers in source space)
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+        # copy libs, set-up soname chain
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src/src/.libs/liblept.so.2.0.0 ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}
+        COMMAND ${CMAKE_COMMAND} -E create_symlink liblept.so.2.0.0 ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/liblept.so
+        COMMAND ${CMAKE_COMMAND} -E create_symlink liblept.so.2.0.0 ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/liblept.so.2
+    INSTALL_COMMAND ""
 )
 
 catkin_package(
-  INCLUDE_DIRS
-    include
-  LIBRARIES
-    lept
+    CFG_EXTRAS libleptonica-extras.cmake # catkin_package does not support artifacts in devel space
+    EXPORTED_TARGETS EP_${PROJECT_NAME}
 )
 
-include_directories(
-  include
+install(DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+    DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+    FILES_MATCHING PATTERN "*.h"
 )
 
-add_library(lept SHARED)
-set_target_properties(lept PROPERTIES LINKER_LANGUAGE CXX)
-
-add_dependencies(copy_lept build_lept)
-add_dependencies(lept copy_lept)
-
-#############
-## Install ##
-#############
-install(TARGETS lept
-  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
-
-install(DIRECTORY include
-  DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
+install(PROGRAMS ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/liblept.so
+                 ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/liblept.so.2
+                 ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/liblept.so.2.0.0
+    DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 )
