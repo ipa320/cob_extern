@@ -11,9 +11,6 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
-  <depend>libleptonica</depend>
-  <depend>mk</depend>
-  <depend>roslib</depend>
-  <depend>rospack</depend>
+  <depend>leptonica</depend>
 
 </package>

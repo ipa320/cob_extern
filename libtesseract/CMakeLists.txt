@@ -1,51 +1,47 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(libtesseract)
 
-find_package(catkin REQUIRED COMPONENTS
-  libleptonica
-  mk
-  roslib
-  rospack
-)
+find_package(catkin REQUIRED)
+find_package(leptonica REQUIRED)
 
-message(STATUS "Project source dir: ${PROJECT_SOURCE_DIR}")
-add_custom_target(
-  build_tesseract ALL
-  COMMAND cmake -E chdir ${PROJECT_SOURCE_DIR} make -f Makefile.tarball
-)
+catkin_destinations() # set-up destination variables
+file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION})
 
-add_custom_target(
-  copy_tesseract ALL
-  COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/lib/libtesseract.so ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}
-    COMMENT "Copying ${PROJECT_SOURCE_DIR}/lib/libtesseract.so to ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION}"
+message("LIBS: ${CATKIN_GLOBAL_LIB_DESTINATION}")
+include(ExternalProject)
+ExternalProject_Add(EP_${PROJECT_NAME}
+    DEPENDS ${leptonica_EXPORTED_TARGETS}
+    URL https://github.com/ipa320/thirdparty/raw/master/tesseract-ocr-rev722.tar.gz
+    URL_MD5 18eb3c2076d2708356212dc6e11ecea4
+
+    UPDATE_COMMAND "./autogen.sh"
+    #PATCH_COMMAND patch < ${PROJECT_SOURCE_DIR}/tesseract.patch
+    CONFIGURE_COMMAND env LIBLEPT_HEADERSDIR="${leptonica_INCLUDE_DIRS}" ./configure --with-extra-libraries="${CATKIN_DEVEL_PREFIX}/lib"
+    SOURCE_DIR ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src
+    BUILD_IN_SOURCE 1
+    BUILD_COMMAND make
+        ## copy headers to devel space (catkin does not like headers in source space)
+        #COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+        ## copy libs, set-up soname chain
+        #COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src/src/.libs/liblept.so.2.0.0 ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}
+        #COMMAND ${CMAKE_COMMAND} -E create_symlink liblept.so.2.0.0 ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/liblept.so
+        #COMMAND ${CMAKE_COMMAND} -E create_symlink liblept.so.2.0.0 ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/liblept.so.2
+    INSTALL_COMMAND ""
 )
 
 catkin_package(
-  INCLUDE_DIRS
-    include
-  LIBRARIES
-    tesseract
+    CFG_EXTRAS libtesseract-extras.cmake # catkin_package does not support artifacts in devel space
+    EXPORTED_TARGETS EP_${PROJECT_NAME}
+    CATKIN_DEPENDS leptonica
 )
 
-include_directories(
-  include
-)
+#install(DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+    #DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+    #FILES_MATCHING PATTERN "*.h"
+#)
 
-add_library(tesseract SHARED)
-set_target_properties(tesseract PROPERTIES LINKER_LANGUAGE CXX)
-
-add_dependencies(copy_tesseract build_tesseract)
-add_dependencies(tesseract copy_tesseract)
-
-#############
-## Install ##
-#############
-install(TARGETS tesseract
-  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
-
-install(DIRECTORY include
-  DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
-)
+#install(PROGRAMS ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/liblept.so
+                 #${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/liblept.so.2
+                 #${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/liblept.so.2.0.0
+    #DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#)
