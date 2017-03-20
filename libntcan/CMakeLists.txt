@@ -20,6 +20,12 @@ catkin_package(
     LIBRARIES ntcan
 )
 
+# copy headers and libs to devel space
+file(COPY common/include/${PROJECT_NAME}/ntcan.h DESTINATION ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION})
+file(COPY common/lib/${MYARCH}/libntcan.so DESTINATION ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION})
+file(COPY common/lib/${MYARCH}/libntcan.so.3 DESTINATION ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION})
+file(COPY common/lib/${MYARCH}/libntcan.so.3.1.7 DESTINATION ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION})
+
 install(PROGRAMS common/lib/${MYARCH}/libntcan.so common/lib/${MYARCH}/libntcan.so.3 common/lib/${MYARCH}/libntcan.so.3.1.7
     DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 )
