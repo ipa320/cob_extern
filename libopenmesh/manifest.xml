@@ -1,0 +1,11 @@
+<package>
+  <description brief="OpenMesh">
+     This package wraps the OpenMesh library to use it as a ros dependency
+  </description>
+  <author>Georg Arbeiter, Steffen Fuchs</author>
+  <license>LGPL</license>
+  <review status="unreviewed" notes=""/>
+  <export>
+    <cpp cflags="-I${prefix}/common/include" lflags="-L${prefix}/common/lib/OpenMesh -lOpenMeshCore -lOpenMeshTools" />
+  </export>
+</package>
