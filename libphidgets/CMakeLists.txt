@@ -8,7 +8,7 @@ file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 
 include(ExternalProject)
 ExternalProject_Add(EP_${PROJECT_NAME}
-    URL https://www.phidgets.com/downloads/libraries/libphidget_2.1.8.20151217.tar.gz
+    URL https://www.phidgets.com/downloads/phidget21/libraries/linux/libphidget/libphidget_2.1.8.20151217.tar.gz
     URL_MD5 818ab2ff1de92ed9568a206e0e89657f
 
     CONFIGURE_COMMAND "./configure"
