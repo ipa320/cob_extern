@@ -2,8 +2,8 @@
 Changelog for package cob_extern
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.6.11 (2017-07-17)
+-------------------
 * corrected spelling mistake
 * minor changes
 * Contributors: ipa-rmb-fj

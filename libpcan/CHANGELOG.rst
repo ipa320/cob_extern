@@ -2,8 +2,8 @@
 Changelog for package libpcan
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.6.11 (2017-07-17)
+-------------------
 * fix include_dirs in cmake_extras
 * use EXPORTED_TARGETS
 * final consistency

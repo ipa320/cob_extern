@@ -2,8 +2,8 @@
 Changelog for package libconcorde_tsp_solver
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.6.11 (2017-07-17)
+-------------------
 * fix include_dirs in cmake_extras
 * use EXPORTED_TARGETS
 * migrated libconcorde_tsp_solver to catkin-native wrapping

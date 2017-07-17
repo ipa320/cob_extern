@@ -2,8 +2,8 @@
 Changelog for package libntcan
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.6.11 (2017-07-17)
+-------------------
 * copy header and libs into devel space
 * use EXPORTED_TARGETS
 * final consistency

@@ -2,8 +2,8 @@
 Changelog for package libqsopt
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.6.11 (2017-07-17)
+-------------------
 * fix include_dirs in cmake_extras
 * final consistency
 * migrated libqsopt to catkin-native wrapping
