@@ -2,6 +2,15 @@
 Changelog for package libphidgets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* fix libphidgets download url
+* fix include_dirs in cmake_extras
+* use EXPORTED_TARGETS
+* final consistency
+* migrated libphidgets to catkin-native wrapping
+* Contributors: Matthias Gruhler, ipa-fxm
+
 0.6.10 (2016-12-08)
 -------------------
 * manually fix changelogs
