@@ -2,6 +2,14 @@
 Changelog for package libntcan
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.11 (2017-07-17)
+-------------------
+* copy header and libs into devel space
+* use EXPORTED_TARGETS
+* final consistency
+* migrated libntcan to catkin-native wrapping
+* Contributors: ipa-fxm
+
 0.6.10 (2016-12-08)
 -------------------
 * update changelog

@@ -2,6 +2,18 @@
 Changelog for package libopengm
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.11 (2017-07-17)
+-------------------
+* fix include_dirs in cmake_extras
+* use EXPORTED_TARGETS
+* migrated opengm to catkin-native wrapping
+* license workarounds
+* style check
+* minor changes
+* changed libopengm to opengm, because of internal includes of opengm-library that expect headers to be in include/opengm
+* changed libopengm to opengm, because of internal includes of opengm-library that expect headers to be in include/opengm
+* Contributors: ipa-fxm, ipa-rmb-fj
+
 0.6.10 (2016-12-08)
 -------------------
 * manually fix changelogs
