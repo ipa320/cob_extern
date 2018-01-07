@@ -2,6 +2,19 @@
 Changelog for package libconcorde_tsp_solver
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.12 (2018-01-07)
+-------------------
+* Merge pull request `#92 <https://github.com/ipa320/cob_extern/issues/92>`_ from ipa320/indigo_release_candidate
+  Indigo release candidate
+* Merge pull request `#91 <https://github.com/ipa320/cob_extern/issues/91>`_ from ipa-rmb/indigo_dev
+  fixed libqsopt and libconcorde_tsp_solver
+* fixed libqsopt and libconcorde_tsp_solver
+* Merge pull request `#90 <https://github.com/ipa320/cob_extern/issues/90>`_ from ipa-rmb/concorde-patch
+  added missing binary in CMakeLists of libconcorde_tsp_solver
+* changed PROGRAMS to FILES for installing concorde.a
+* added missing binary in CMakeLists of libconcorde_tsp_solver
+* Contributors: Felix Messmer, Richard Bormann, ipa-fez
+
 0.6.11 (2017-07-17)
 -------------------
 * fix include_dirs in cmake_extras

@@ -2,6 +2,15 @@
 Changelog for package libqsopt
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.12 (2018-01-07)
+-------------------
+* Merge pull request `#92 <https://github.com/ipa320/cob_extern/issues/92>`_ from ipa320/indigo_release_candidate
+  Indigo release candidate
+* Merge pull request `#91 <https://github.com/ipa320/cob_extern/issues/91>`_ from ipa-rmb/indigo_dev
+  fixed libqsopt and libconcorde_tsp_solver
+* fixed libqsopt and libconcorde_tsp_solver
+* Contributors: Felix Messmer, Richard Bormann
+
 0.6.11 (2017-07-17)
 -------------------
 * fix include_dirs in cmake_extras

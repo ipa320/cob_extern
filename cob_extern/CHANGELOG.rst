@@ -2,6 +2,15 @@
 Changelog for package cob_extern
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.12 (2018-01-07)
+-------------------
+* Merge pull request `#92 <https://github.com/ipa320/cob_extern/issues/92>`_ from ipa320/indigo_release_candidate
+  Indigo release candidate
+* Merge pull request `#89 <https://github.com/ipa320/cob_extern/issues/89>`_ from ipa320/ipa-rmb-patch-1
+  Changed maintainer
+* Changed maintainer
+* Contributors: Felix Messmer, Richard Bormann
+
 0.6.11 (2017-07-17)
 -------------------
 * corrected spelling mistake
