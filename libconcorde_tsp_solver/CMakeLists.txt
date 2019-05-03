@@ -38,12 +38,11 @@ ExternalProject_Add(EP_${PROJECT_NAME}
     BUILD_IN_SOURCE 1
     BUILD_COMMAND
       COMMAND ${QSOPT_CONFIGURE}  # use special configuration when building with qsopt
-      COMMAND make
+      COMMAND make concorde.a concorde.h
       # copy headers to devel space (catkin does not like headers in source space)
       COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src/concorde.h ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION}
       # copy libs, set-up soname chain
       COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src/concorde.a ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}
-      COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src/TSP/concorde ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_BIN_DESTINATION}/concorde
     INSTALL_COMMAND ""
 )
 
@@ -58,8 +57,4 @@ install(DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION}/
 
 install(FILES ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/concorde.a
     DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-)
-
-install(PROGRAMS ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_BIN_DESTINATION}/concorde
-    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
