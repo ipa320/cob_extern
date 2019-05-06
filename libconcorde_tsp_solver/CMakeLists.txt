@@ -8,6 +8,7 @@ file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 
 # check if qsopt has been installed
 find_package(libqsopt)
+set(libqsopt_FOUND "")   # todo: hack: this temporarily solves the problem that qsopt cannot be compiled with concorde in 18.04 and melodic
 message("libqsopt_FOUND = ${libqsopt_FOUND}")
 message("libqsopt_INCLUDE_DIRS = ${libqsopt_INCLUDE_DIRS}")
 LIST(GET libqsopt_INCLUDE_DIRS 0 LIBQSOPT_INCLUDE_PATH)
