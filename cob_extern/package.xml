@@ -20,7 +20,6 @@
   <exec_depend>libntcan</exec_depend>
   <exec_depend>libpcan</exec_depend>
   <exec_depend>libphidgets</exec_depend>
-  <exec_depend>libqsopt</exec_depend>
   <exec_depend>opengm</exec_depend>
 
   <export>
