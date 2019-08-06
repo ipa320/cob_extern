@@ -2,8 +2,8 @@
 Changelog for package cob_extern
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.6.13 (2019-08-06)
+-------------------
 * Merge pull request `#99 <https://github.com/ipa320/cob_extern/issues/99>`_ from fmessmer/travis_melodic
   [Melodic] melodify
 * remove libqsopt
