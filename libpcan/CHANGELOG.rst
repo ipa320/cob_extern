@@ -2,6 +2,9 @@
 Changelog for package libpcan
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.13 (2019-08-06)
+-------------------
+
 0.6.12 (2018-01-07)
 -------------------
 * Merge pull request `#92 <https://github.com/ipa320/cob_extern/issues/92>`_ from ipa320/indigo_release_candidate
