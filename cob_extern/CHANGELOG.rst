@@ -2,6 +2,14 @@
 Changelog for package cob_extern
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request `#99 <https://github.com/ipa320/cob_extern/issues/99>`_ from fmessmer/travis_melodic
+  [Melodic] melodify
+* remove libqsopt
+* remove libconcorde_tsp_solver
+* Contributors: Benjamin Maidel, fmessmer
+
 0.6.12 (2018-01-07)
 -------------------
 * Merge pull request `#92 <https://github.com/ipa320/cob_extern/issues/92>`_ from ipa320/indigo_release_candidate
