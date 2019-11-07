@@ -2,8 +2,8 @@
 Changelog for package libpcan
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.6.14 (2019-11-07)
+-------------------
 * Merge pull request `#100 <https://github.com/ipa320/cob_extern/issues/100>`_ from christian-rauch/rm_dep_header
   remove dependency on linux-headers-generic
 * remove dependency on linux-headers-generic
