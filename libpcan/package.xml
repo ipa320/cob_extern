@@ -14,6 +14,4 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
-  <depend>linux-headers-generic</depend>
-
 </package>
