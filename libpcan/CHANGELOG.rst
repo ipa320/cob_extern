@@ -2,6 +2,15 @@
 Changelog for package libpcan
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.14 (2019-11-07)
+-------------------
+* Merge pull request `#100 <https://github.com/ipa320/cob_extern/issues/100>`_ from christian-rauch/rm_dep_header
+  remove dependency on linux-headers-generic
+* remove dependency on linux-headers-generic
+  rosdep key 'linux-headers-generic' will always install the "standard" kernel headers. On Ubuntu LTS, where kernels are updated with point
+  releases, this will depend on the old kernel header files, while a newer kernel image might be booted.
+* Contributors: Christian Rauch, Felix Messmer
+
 0.6.13 (2019-08-06)
 -------------------
 
