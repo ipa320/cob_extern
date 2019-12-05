@@ -11,7 +11,7 @@ ExternalProject_Add(EP_${PROJECT_NAME}
     URL https://www.phidgets.com/downloads/phidget21/libraries/linux/libphidget/libphidget_2.1.8.20151217.tar.gz
     URL_MD5 818ab2ff1de92ed9568a206e0e89657f
 
-    CONFIGURE_COMMAND "./configure"
+    CONFIGURE_COMMAND ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src/configure CFLAGS=-Wno-incompatible-pointer-types\ -Wno-deprecated-declarations
     SOURCE_DIR ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src
     BUILD_IN_SOURCE 1
     BUILD_COMMAND make
