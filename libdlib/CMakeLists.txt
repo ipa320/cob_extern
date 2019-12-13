@@ -6,12 +6,12 @@ find_package(catkin REQUIRED)
 catkin_destinations() # set-up destination variables
 file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION})
 
-set(VERSION 18.17)
+set(VERSION 19.18)
 
 include(ExternalProject)
 ExternalProject_Add(EP_${PROJECT_NAME}
     URL https://github.com/ipa320/thirdparty/raw/master/dlib-${VERSION}.tar.bz2
-    URL_MD5 249164604423590c3f1682ab1af66ca0
+    URL_MD5 b605c7e5d484346093d9de5a7ff0117f
 
     SOURCE_DIR ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src
     BINARY_DIR ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-build
