@@ -16,8 +16,8 @@ ExternalProject_Add(EP_${PROJECT_NAME}
     SOURCE_DIR ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src
     BINARY_DIR ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-build
 
-    CONFIGURE_COMMAND ${CMAKE_COMMAND} CFLAGS=-Wno-deprecated-declarations\ -Wno-terminate CXXFLAGS=-Wno-deprecated-declarations\ -Wno-terminate ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src/dlib
-    BUILD_COMMAND ${CMAKE_COMMAND} --build . --config Release -- -Wno-deprecated-declarations -Wno-terminate
+    CONFIGURE_COMMAND ${CMAKE_COMMAND} CFLAGS=-Wno-aggressive-loop-optimizations CXXFLAGS=-Wno-aggressive-loop-optimizations ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src/dlib
+    BUILD_COMMAND ${CMAKE_COMMAND} --build . --config Release -- -Wno-aggressive-loop-optimizations
         # copy headers to devel space (catkin does not like headers in source space)
         COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_BINARY_DIR}/${PROJECT_NAME}-src/dlib ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION}
         # copy libs, set-up soname chain
