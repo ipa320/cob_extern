@@ -11,6 +11,9 @@ env:
     - ADDITIONAL_DEBS='apt-utils dialog curl wget'
     - CMAKE_ARGS=-DCMAKE_BUILD_TYPE=Release
     - NOT_TEST_DOWNSTREAM=true
+    - PYLINT_ARGS="--output-format=parseable --errors-only"
+    - PYLINT2_CHECK=true
+    - PYLINT3_CHECK=true
     - ROS_REPO=ros
     - VERBOSE_OUTPUT=false
     - VERBOSE_TESTS=false
@@ -18,6 +21,6 @@ env:
     - ROS_DISTRO=kinetic
     - ROS_DISTRO=melodic
 install:
-  - git clone --quiet --depth 1 https://github.com/ros-industrial/industrial_ci.git .industrial_ci -b master
+  - git clone --quiet --depth 1 https://github.com/fmessmer/industrial_ci.git .industrial_ci -b master_pylint
 script:
   - .industrial_ci/travis.sh
