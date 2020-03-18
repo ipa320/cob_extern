@@ -2,8 +2,8 @@
 Changelog for package libphidgets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.6.15 (2020-03-18)
+-------------------
 * Merge pull request `#106 <https://github.com/ipa320/cob_extern/issues/106>`_ from fmessmer/upgrade_dlib_19.9
   suppress warnings + upgrade dlib 19.9
 * more -Wno-* for melodic
