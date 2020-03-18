@@ -2,6 +2,19 @@
 Changelog for package libdlib
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request `#106 <https://github.com/ipa320/cob_extern/issues/106>`_ from fmessmer/upgrade_dlib_19.9
+  suppress warnings + upgrade dlib 19.9
+* adjust -Wno-* for libdlib 19.9
+* upgrade dlib version to 19.9
+* add -Wno-* CXXFLAGS
+* -Wno-* in CONFIGURE_COMMAND
+* Merge pull request `#102 <https://github.com/ipa320/cob_extern/issues/102>`_ from fmessmer/suppress_warnings
+  add -Wno-* compile option to suppress warnings
+* add -Wno-* to libdlib
+* Contributors: Felix Messmer, fmessmer
+
 0.6.14 (2019-11-07)
 -------------------
 
