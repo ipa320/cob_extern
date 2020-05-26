@@ -2,6 +2,9 @@
 Changelog for package libntcan
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.6.16 (2020-05-26)
 -------------------
 * Merge pull request `#109 <https://github.com/ipa320/cob_extern/issues/109>`_ from fmessmer/noetic_release
