@@ -2,6 +2,16 @@
 Changelog for package libpcan
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.6.17 (2020-05-26)
+-------------------
+
+0.6.16 (2020-05-26)
+-------------------
+* Merge pull request `#109 <https://github.com/ipa320/cob_extern/issues/109>`_ from fmessmer/noetic_release
+  Noetic release
+* Bump CMake version to avoid CMP0048 warning
+* Contributors: Felix Messmer, fmessmer
+
 0.6.15 (2020-03-18)
 -------------------
 
