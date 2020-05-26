@@ -22,6 +22,6 @@ env:
     - ROS_DISTRO=melodic
     - ROS_DISTRO=noetic
 install:
-  - git clone --quiet --depth 1 https://github.com/fmessmer/industrial_ci.git .industrial_ci -b master_pylint
+  - git clone --quiet --depth 1 https://github.com/fmessmer/industrial_ci.git .industrial_ci -b master_pylint_extensions
 script:
   - .industrial_ci/travis.sh
