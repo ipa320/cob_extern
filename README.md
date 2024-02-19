@@ -11,7 +11,7 @@ cob_extern
 
 ## Travis - Continuous Integration
 
-Status: [![Build Status](https://travis-ci.com/ipa320/cob_extern.svg?branch=indigo_dev)](https://travis-ci.com/ipa320/cob_extern)
+Status: [![Build Status](https://app.travis-ci.com/ipa320/cob_extern.svg?branch=indigo_dev)](https://app.travis-ci.com/ipa320/cob_extern)
 
 ## ROS Buildfarm
 
