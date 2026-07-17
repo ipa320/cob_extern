@@ -5,7 +5,7 @@ find_package(catkin REQUIRED)
 
 find_program(CMAKE_DPKG dpkg /bin /usr/bin /usr/local/bin) 
 if(CMAKE_DPKG)
-  exec_program(dpkg ARGS --print-architecture OUTPUT_VARIABLE CMAKE_DPKG_ARCH)
+  execute_process(COMMAND dpkg --print-architecture OUTPUT_VARIABLE CMAKE_DPKG_ARCH)
   if(CMAKE_DPKG_ARCH MATCHES "amd64")
     message(STATUS "++++++++++++++++++++++++++ DETECTED 64 bit +++++++++++++++++++++++++++++++++++")
     set(MYARCH "x86_64")
